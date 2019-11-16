@@ -6,5 +6,5 @@ C_FLAGS = -m64 -g -O0 -D_DEBUG -Wall -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/roger/Desktop/COMP-232/ciLisp/src -I/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug 
+C_INCLUDES = -I/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src -I/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug 
 

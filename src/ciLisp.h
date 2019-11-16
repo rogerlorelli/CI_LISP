@@ -83,16 +83,38 @@ typedef struct {
     struct ast_node *op2;
 } FUNC_AST_NODE;
 
+typedef struct symbol_table_node {
+    char *ident;
+    struct ast_node *val;
+    struct symbol_table_node *next;
+} SYMBOL_TABLE_NODE;
+
+typedef struct symbol_ast_node {
+    char *ident;
+} SYMBOL_AST_NODE;
+
 // Generic Abstract Syntax Tree node. Stores the type of node,
 // and reference to the corresponding specific node (initially a number or function call).
 typedef struct ast_node {
     AST_NODE_TYPE type;
+    SYMBOL_TABLE_NODE *symbolTable;
+    struct ast_node *parent;
     union {
         NUM_AST_NODE number;
         FUNC_AST_NODE function;
+        SYMBOL_AST_NODE symbol;
     } data;
 } AST_NODE;
 
+
+
+SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1);
+
+SYMBOL_TABLE_NODE *linkSymbolNode(SYMBOL_TABLE_NODE *node1, SYMBOL_TABLE_NODE *node2);
+
+AST_NODE *linkSymbolTableToAST(SYMBOL_TABLE_NODE *symbNode, AST_NODE *node);
+
+AST_NODE *createSymbolNode(char *id);
 
 AST_NODE *createNumberNode(double value, NUM_TYPE type);
 
@@ -103,10 +125,13 @@ void freeNode(AST_NODE *node);
 RET_VAL eval(AST_NODE *node);
 RET_VAL evalNumNode(NUM_AST_NODE *numNode);
 RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode);
+RET_VAL evalSymbNode(AST_NODE *symbNode);
 
 void printRetVal(RET_VAL val);
 
 RET_VAL negHelper(RET_VAL *op1);
+RET_VAL absHelper(RET_VAL *op1);
+RET_VAL expHelper(RET_VAL *op1);
 RET_VAL sqrtHelper(RET_VAL *op1);
 RET_VAL addHelper(RET_VAL *op1,RET_VAL *op2);
 RET_VAL subHelper(RET_VAL *op1,RET_VAL *op2);
@@ -115,7 +140,9 @@ RET_VAL divHelper(RET_VAL *op1,RET_VAL *op2);
 RET_VAL remHelper(RET_VAL *op1,RET_VAL *op2);
 RET_VAL maxHelper(RET_VAL *op1,RET_VAL *op2);
 RET_VAL minHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL logHelper(RET_VAL *op1);
 RET_VAL powHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL exp2Helper(RET_VAL *op1);
 RET_VAL cbrtHelper(RET_VAL *op1);
 RET_VAL hypotHelper(RET_VAL *op1,RET_VAL *op2);
 

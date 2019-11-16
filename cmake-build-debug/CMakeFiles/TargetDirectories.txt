@@ -1,3 +1,3 @@
-/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/CMakeFiles/cilisp.dir
-/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/CMakeFiles/cilisp.dir
+/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/CMakeFiles/edit_cache.dir

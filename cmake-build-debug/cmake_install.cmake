@@ -1,4 +1,4 @@
-# Install script for directory: /home/roger/Desktop/COMP-232/ciLisp
+# Install script for directory: /home/roger/Desktop/COMP-232/ciLisp/CI_LISP
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

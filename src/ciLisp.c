@@ -116,6 +116,15 @@ AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1, AST_NODE *op2)
     }
     node->data.function.op1 = op1;
     node->data.function.op2 = op2;
+    if(op1 != NULL)
+    {
+        node->data.function.op1->parent = node;
+    }
+    if(op2 != NULL)
+    {
+        node->data.function.op2->parent = node;
+    }
+    return node;
 }
 
 // Called after execution is done on the base of the tree.
@@ -138,6 +147,10 @@ void freeNode(AST_NODE *node)
         {
             free(node->data.function.ident);
         }
+    }
+    if (node->type == SYM_NODE_TYPE)
+    {
+        free(node->data.symbol.ident);
     }
     free(node);
 }
@@ -164,12 +177,41 @@ RET_VAL eval(AST_NODE *node)
         case FUNC_NODE_TYPE:
             result = evalFuncNode(&node->data.function);
             break;
+        case SYM_NODE_TYPE:
+            result = evalSymbNode(node);
+            break;
         default:
             yyerror("Invalid AST_NODE_TYPE, probably invalid writes somewhere!");
     }
 
     return result;
 }
+
+RET_VAL evalSymbNode(AST_NODE *symbNode)
+{
+    if (!symbNode)
+        return (RET_VAL){INT_TYPE, NAN};
+
+    RET_VAL result = {INT_TYPE, NAN};
+    AST_NODE *outerNode = symbNode;
+    bool found = false;
+    while(outerNode != NULL && !found)
+    {
+        SYMBOL_TABLE_NODE *currNode = outerNode->symbolTable;
+        while(currNode != NULL && !found)
+        {
+            if(strcmp(symbNode->data.symbol.ident,currNode->ident) == 0)
+            {
+                result = eval(currNode->val);
+                found = !found;
+            }
+           currNode = currNode->next;
+        }
+        outerNode = outerNode->parent;
+    }
+    return result;
+}
+
 
 // returns a pointer to the NUM_AST_NODE (aka RET_VAL) referenced by node.
 // DOES NOT allocate space for a new RET_VAL.
@@ -434,4 +476,53 @@ void printRetVal(RET_VAL val)
     {
         printf("VALUE: %.4f\n",val.value.dval);
     }
+}
+
+SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1)
+{
+    SYMBOL_TABLE_NODE *node;
+    size_t nodeSize;
+
+    // allocate space for the fixed sie and the variable part (union)
+    nodeSize = sizeof(SYMBOL_TABLE_NODE);
+    if ((node = calloc(nodeSize, 1)) == NULL)
+        yyerror("Memory allocation failed!");
+
+    node->ident = calloc(sizeof(id), 1);
+    strcpy(node->ident,id);
+    node->val = op1;
+    return node;
+}
+
+AST_NODE *createSymbolNode(char *id)
+{
+    AST_NODE *node;
+    size_t nodeSize;
+
+    // allocate space for the fixed sie and the variable part (union)
+    nodeSize = sizeof(AST_NODE);
+    if ((node = calloc(1, nodeSize)) == NULL)
+        yyerror("Memory allocation failed!");
+
+    node->type = SYM_NODE_TYPE;
+    node->data.symbol.ident = id;
+    return node;
+}
+
+SYMBOL_TABLE_NODE *linkSymbolNode(SYMBOL_TABLE_NODE *node1, SYMBOL_TABLE_NODE *node2)
+{
+    node2->next = node1;
+    return node2;
+}
+
+AST_NODE *linkSymbolTableToAST(SYMBOL_TABLE_NODE *symbNode, AST_NODE *node)
+{
+    node->symbolTable = symbNode;
+    SYMBOL_TABLE_NODE *curNode = symbNode;
+    while(curNode != NULL)
+    {
+        curNode->val->parent = node;
+        curNode = curNode->next;
+    }
+    return node;
 }

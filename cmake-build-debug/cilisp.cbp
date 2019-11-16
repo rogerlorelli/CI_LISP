@@ -8,34 +8,34 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug"/>
+				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug"/>
+				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cilisp">
-				<Option output="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/cilisp" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug"/>
+				<Option output="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/cilisp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/roger/Desktop/COMP-232/ciLisp/src"/>
-					<Add directory="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug"/>
+					<Add directory="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src"/>
+					<Add directory="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -46,21 +46,21 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 cilisp"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 cilisp"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="cilisp/fast">
-				<Option output="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/cilisp" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug"/>
+				<Option output="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/cilisp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/roger/Desktop/COMP-232/ciLisp/src"/>
-					<Add directory="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug"/>
+					<Add directory="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src"/>
+					<Add directory="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -71,48 +71,48 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 cilisp/fast"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 cilisp/fast"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug"/>
+				<Option working_dir="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j2 -f &quot;/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c">
 			<Option target="cilisp"/>
 		</Unit>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c.rule">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c.rule">
 			<Option target="cilisp"/>
 		</Unit>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.h">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.h">
 			<Option target="cilisp"/>
 		</Unit>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.output">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.output">
 			<Option target="cilisp"/>
 		</Unit>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispScanner.c">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispScanner.c">
 			<Option target="cilisp"/>
 		</Unit>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispScanner.c.rule">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispScanner.c.rule">
 			<Option target="cilisp"/>
 		</Unit>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/src/ciLisp.c">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src/ciLisp.c">
 			<Option target="cilisp"/>
 		</Unit>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/src/ciLisp.h">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src/ciLisp.h">
 			<Option target="cilisp"/>
 		</Unit>
-		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CMakeLists.txt">
+		<Unit filename="/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

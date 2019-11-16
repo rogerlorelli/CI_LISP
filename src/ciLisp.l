@@ -6,6 +6,8 @@
     #include "ciLisp.h"
 %}
 
+letter [a-zA-Z]
+symbol {letter}+
 digit [0-9]
 int [+-]?{digit}+
 double [+-]?{digit}\.{digit}*
@@ -23,6 +25,10 @@ func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"
     yylval.dval = strtod(yytext, NULL);
     fprintf(stderr, "lex: DOUBLE dval = %lf\n", yylval.dval);
     return DOUBLE;
+    }
+
+"let" {
+    return LET;
     }
 
 "quit" {
@@ -44,6 +50,13 @@ func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"
 ")" {
     fprintf(stderr, "lex: RPAREN\n");
     return RPAREN;
+    }
+
+{symbol} {
+    yylval.sval = (char *) malloc(strlen(yytext)*sizeof(char));
+    strcpy(yylval.sval, yytext);
+    fprintf(stderr, "lex: SYMBOL sval = %s\n", yylval.sval);
+    return SYMBOL;
     }
 
 [\n] {
