@@ -1,0 +1,1 @@
+/usr/bin/cc -m64 -g -O0 -D_DEBUG -Wall -g   CMakeFiles/cilisp.dir/src/ciLisp.c.o CMakeFiles/cilisp.dir/ciLispScanner.c.o CMakeFiles/cilisp.dir/ciLispParser.c.o  -o cilisp -lm 

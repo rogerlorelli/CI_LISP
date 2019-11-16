@@ -6,10 +6,10 @@
     double dval;
     char *sval;
     struct ast_node *astNode;
-};
+}
 
 %token <sval> FUNC
-%token <dval> INT, DOUBLE
+%token <dval> INT DOUBLE
 %token LPAREN RPAREN EOL QUIT
 
 %type <astNode> s_expr f_expr number
@@ -56,11 +56,13 @@ number:
 f_expr:
     LPAREN FUNC s_expr RPAREN {
         fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr RPAREN\n");
-        $$ = createFunctionNode($2, $3, 0);
+        $$ = createFunctionNode($2, $3, NULL);
     }
     | LPAREN FUNC s_expr s_expr RPAREN {
         fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr expr RPAREN\n");
         $$ = createFunctionNode($2, $3, $4);
     };
+
+
 %%
 

@@ -1,4 +1,5 @@
 #include "ciLisp.h"
+#include "math.h"
 
 void yyerror(char *s) {
     fprintf(stderr, "\nERROR: %s\n", s);
@@ -61,8 +62,22 @@ AST_NODE *createNumberNode(double value, NUM_TYPE type)
     if ((node = calloc(nodeSize, 1)) == NULL)
         yyerror("Memory allocation failed!");
 
-    // TODO set the AST_NODE's type, assign values to contained NUM_AST_NODE
-
+    // TODO set the AST_NODE's type, assign values to contained NUM_AST_NODE - done
+    node->type = NUM_NODE_TYPE;
+    switch(type)
+    {
+        case INT_TYPE:
+            node->data.number.type = INT_TYPE;
+            //node->data.number.value.ival = (long)value;
+            break;
+        case DOUBLE_TYPE:
+            node->data.number.type = DOUBLE_TYPE;
+            //node->data.number.value.dval = value;
+            break;
+        default:
+            printf("Invalid NUM_NODE_TYPE\n");
+    }
+    node->data.number.value.dval = value;
     return node;
 }
 
@@ -83,14 +98,24 @@ AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1, AST_NODE *op2)
     if ((node = calloc(nodeSize, 1)) == NULL)
         yyerror("Memory allocation failed!");
 
-    // TODO set the AST_NODE's type, populate contained FUNC_AST_NODE
+    // TODO set the AST_NODE's type, populate contained FUNC_AST_NODE - done
     // NOTE: you do not need to populate the "ident" field unless the function is type CUSTOM_OPER.
     // When you do have a CUSTOM_OPER, you do NOT need to allocate and strcpy here.
     // The funcName will be a string identifier for which space should be allocated in the tokenizer.
     // For CUSTOM_OPER functions, you should simply assign the "ident" pointer to the passed in funcName.
     // For functions other than CUSTOM_OPER, you should free the funcName after you're assigned the OPER_TYPE.
-
-    return node;
+    node->type = FUNC_NODE_TYPE;
+    node->data.function.oper = resolveFunc(funcName);
+    if(node->data.function.oper == CUSTOM_OPER)
+    {
+        node->data.function.ident = funcName;
+    }
+    else
+    {
+        free(funcName);
+    }
+    node->data.function.op1 = op1;
+    node->data.function.op2 = op2;
 }
 
 // Called after execution is done on the base of the tree.
@@ -114,7 +139,6 @@ void freeNode(AST_NODE *node)
             free(node->data.function.ident);
         }
     }
-
     free(node);
 }
 
@@ -129,17 +153,23 @@ RET_VAL eval(AST_NODE *node)
 
     RET_VAL result = {INT_TYPE, NAN}; // see NUM_AST_NODE, because RET_VAL is just an alternative name for it.
 
-    // TODO complete the switch.
+    // TODO complete the switch. - done
     // Make calls to other eval functions based on node type.
     // Use the results of those calls to populate result.
     switch (node->type)
     {
+        case NUM_NODE_TYPE:
+            result = evalNumNode(&node->data.number);
+            break;
+        case FUNC_NODE_TYPE:
+            result = evalFuncNode(&node->data.function);
+            break;
         default:
             yyerror("Invalid AST_NODE_TYPE, probably invalid writes somewhere!");
     }
 
     return result;
-}  
+}
 
 // returns a pointer to the NUM_AST_NODE (aka RET_VAL) referenced by node.
 // DOES NOT allocate space for a new RET_VAL.
@@ -150,12 +180,13 @@ RET_VAL evalNumNode(NUM_AST_NODE *numNode)
 
     RET_VAL result = {INT_TYPE, NAN};
 
-    // TODO populate result with the values stored in the node.
+    // TODO populate result with the values stored in the node. -done
     // SEE: AST_NODE, AST_NODE_TYPE, NUM_AST_NODE
-
-
+    result.type = numNode->type;
+    result.value.dval = numNode->value.dval;
     return result;
 }
+
 
 
 RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode)
@@ -167,13 +198,240 @@ RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode)
 
     // TODO populate result with the result of running the function on its operands.
     // SEE: AST_NODE, AST_NODE_TYPE, FUNC_AST_NODE
+    RET_VAL op1 = eval(funcNode->op1);
+    RET_VAL op2 = eval(funcNode->op2);
+    switch(funcNode->oper)
+    {
+        case NEG_OPER:
+            result = negHelper(&op1);
+            break;
+        case ABS_OPER:
+            result.value.dval = fabs(funcNode->op1->data.number.value.dval);
+            result.type = funcNode->op1->data.number.type;
+            break;
+        case EXP_OPER:
+            result.value.dval = exp(funcNode->op1->data.number.value.dval);
+            result.type = numTypeHelper1(&op1);
+            break;
+        case SQRT_OPER:
+            result = sqrtHelper(&op1);
+            break;
+        case ADD_OPER:
+            result = addHelper(&op1,&op2);
+            break;
+        case SUB_OPER:
+            result = subHelper(&op1,&op2);
+            break;
+        case MULT_OPER:
+            result = multHelper(&op1,&op2);
+            break;
+        case DIV_OPER:
+            result = divHelper(&op1,&op2);
+            break;
+        case REMAINDER_OPER:
+            result = remHelper(&op1,&op2);
+            break;
+        case LOG_OPER:
+            result.value.dval = log(op1.value.dval);
+            result.type = numTypeHelper1(&op1);
+            break;
+        case POW_OPER:
+            result = powHelper(&op1,&op2);
+            break;
+        case MAX_OPER:
+            result = maxHelper(&op1,&op2);
+            break;
+        case MIN_OPER:
+            result = minHelper(&op1,&op2);
+            break;
+        case EXP2_OPER:
+            result.value.dval = exp2(op1.value.dval);
+            result.type = op1.type;
+            break;
+        case CBRT_OPER:
+            result = cbrtHelper(&op1);
+            break;
+        case HYPOT_OPER:
+            result = hypotHelper(&op1,&op2);
+            break;
+        default:
+            printf("Some other operation!\n");
 
-
+    }
     return result;
+}
+RET_VAL negHelper(RET_VAL *op1)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.type = op1->type;
+    result.value.dval = -1 * op1->value.dval;
+    return result;
+}
+
+RET_VAL addHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.type = numTypeHelper2(op1,op2);
+    result.value.dval = op1->value.dval + op2->value.dval;
+    return result;
+}
+
+RET_VAL subHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.type = numTypeHelper2(op1,op2);
+    result.value.dval = op1->value.dval - op2->value.dval;
+    return result;
+}
+
+RET_VAL multHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.type = numTypeHelper2(op1,op2);
+    result.value.dval = op1->value.dval * op2->value.dval;
+    return result;
+}
+
+RET_VAL divHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.type = numTypeHelper2(op1,op2);
+    result.value.dval = op1->value.dval / op2->value.dval;
+    return result;
+}
+
+RET_VAL remHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.value.dval = remainder(op1->value.dval, op2->value.dval);
+    result.type = numTypeHelper1(op1);
+    return result;
+}
+
+RET_VAL powHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.type = numTypeHelper2(op1,op2);
+    result.value.dval = pow(op1->value.dval, op2->value.dval);
+    return result;
+}
+
+RET_VAL maxHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    if(op1->value.dval > op2->value.dval)
+    {
+        result.type = op1->type;
+        result.value.dval = op1->value.dval;
+    }
+    else if(op1->value.dval < op2->value.dval)
+    {
+        result.type = op2->type;
+        result.value.dval = op2->value.dval;
+    }
+    else
+    {
+        if(op1->type == DOUBLE_TYPE || op2->type == DOUBLE_TYPE)
+        {
+            result.type = DOUBLE_TYPE;
+        }
+        else
+        {
+            result.type = INT_TYPE;
+        }
+        result.value.dval = op1->value.dval;
+    }
+    return result;
+}
+
+RET_VAL minHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    if(op1->value.dval < op2->value.dval)
+    {
+        result.type = op1->type;
+        result.value.dval = op1->value.dval;
+    }
+    else if(op1->value.dval > op2->value.dval)
+    {
+        result.type = op2->type;
+        result.value.dval = op2->value.dval;
+    }
+    else
+    {
+        if(op1->type == DOUBLE_TYPE || op2->type == DOUBLE_TYPE)
+        {
+            result.type = DOUBLE_TYPE;
+        }
+        else
+        {
+            result.type = INT_TYPE;
+        }
+        result.value.dval = op1->value.dval;
+    }
+    return result;
+}
+
+RET_VAL hypotHelper(RET_VAL *op1,RET_VAL *op2)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.value.dval = hypot(op1->value.dval, op2->value.dval);
+    result.type = numTypeHelper2(op1,op2);
+    return result;
+}
+
+RET_VAL sqrtHelper(RET_VAL *op1)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.value.dval = sqrt(op1->value.dval);
+    result.type = numTypeHelper1(op1);
+    return result;
+}
+
+RET_VAL cbrtHelper(RET_VAL *op1)
+{
+    RET_VAL result = {INT_TYPE, NAN};
+    result.value.dval = cbrt(op1->value.dval);
+    result.type = numTypeHelper1(op1);
+    return result;
+}
+
+NUM_TYPE numTypeHelper2(RET_VAL *op1,RET_VAL *op2)
+{
+    if(op1->type == DOUBLE_TYPE || op2->type == DOUBLE_TYPE)
+    {
+        return DOUBLE_TYPE;
+    }
+    else
+    {
+        return INT_TYPE;
+    }
+}
+
+NUM_TYPE numTypeHelper1(RET_VAL *op1)
+{
+    if(remainder(op1->value.dval,1) == 0)
+    {
+        return INT_TYPE;
+    }
+    else
+    {
+        return DOUBLE_TYPE;
+    }
 }
 
 // prints the type and value of a RET_VAL
 void printRetVal(RET_VAL val)
 {
-    // TODO print the type and value of the value passed in.
+    char* numNames[] = {"INT_TYPE","DOUBLE_TYPE"};
+    // TODO print the type and value of the value passed in. - done
+    printf("TYPE: %s\n",numNames[val.type]);
+    if(val.type == INT_TYPE)
+    {
+        printf("VALUE: %.0ld\n",lround(val.value.dval));
+    }
+    else
+    {
+        printf("VALUE: %.4f\n",val.value.dval);
+    }
 }

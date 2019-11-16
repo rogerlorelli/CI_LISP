@@ -51,7 +51,8 @@ OPER_TYPE resolveFunc(char *);
 // You will expand this enum as you build the project.
 typedef enum {
     NUM_NODE_TYPE,
-    FUNC_NODE_TYPE
+    FUNC_NODE_TYPE,
+    SYM_NODE_TYPE
 } AST_NODE_TYPE;
 
 // Types of numeric values
@@ -92,6 +93,7 @@ typedef struct ast_node {
     } data;
 } AST_NODE;
 
+
 AST_NODE *createNumberNode(double value, NUM_TYPE type);
 
 AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1, AST_NODE *op2);
@@ -103,5 +105,22 @@ RET_VAL evalNumNode(NUM_AST_NODE *numNode);
 RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode);
 
 void printRetVal(RET_VAL val);
+
+RET_VAL negHelper(RET_VAL *op1);
+RET_VAL sqrtHelper(RET_VAL *op1);
+RET_VAL addHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL subHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL multHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL divHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL remHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL maxHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL minHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL powHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL cbrtHelper(RET_VAL *op1);
+RET_VAL hypotHelper(RET_VAL *op1,RET_VAL *op2);
+
+NUM_TYPE numTypeHelper1(RET_VAL *op1);
+NUM_TYPE numTypeHelper2(RET_VAL *op1,RET_VAL *op2);
+
 
 #endif

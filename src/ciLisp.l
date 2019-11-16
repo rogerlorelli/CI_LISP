@@ -23,7 +23,7 @@ func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"
     yylval.dval = strtod(yytext, NULL);
     fprintf(stderr, "lex: DOUBLE dval = %lf\n", yylval.dval);
     return DOUBLE;
-}
+    }
 
 "quit" {
     return QUIT;
