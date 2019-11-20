@@ -32,6 +32,7 @@ char *funcNames[] = {
         "equal",
         "less",
         "greater",
+        "print",
         ""
 };
 
@@ -304,6 +305,10 @@ RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode)
             break;
         case HYPOT_OPER:
             result = hypotHelper(&op1,&op2);
+            break;
+        case PRINT_OPER:
+            printRetVal(op1);
+            result = op1;
             break;
         default:
             printf("Some other operation!\n");

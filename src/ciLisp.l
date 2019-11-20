@@ -12,7 +12,7 @@ digit [0-9]
 int [+-]?{digit}+
 double [+-]?{digit}\.{digit}*
 number [type] int | [type] double
-func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"max"|"min"
+func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"max"|"min"|"print"
 
 %%
 
