@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src/ciLisp.c
+ciLisp.h
+/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src/ciLisp.h
+math.h
+/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src/math.h
+
+/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src/ciLisp.h
+stdio.h
+-
+stdlib.h
+-
+stdarg.h
+-
+string.h
+-
+math.h
+-
+stdbool.h
+-
+ciLispParser.h
+/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/src/ciLispParser.h
+
+ciLispParser.h
+

@@ -66,7 +66,7 @@
 
     #include "ciLisp.h"
 
-#line 70 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:339  */
+#line 70 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -86,8 +86,8 @@
 
 /* In a future release of Bison, this section will be replaced
    by #include "ciLispParser.h".  */
-#ifndef YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED
-# define YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED
+#ifndef YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CI_LISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED
+# define YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CI_LISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -109,7 +109,9 @@ extern int yydebug;
     RPAREN = 263,
     EOL = 264,
     QUIT = 265,
-    LET = 266
+    LET = 266,
+    TYPE_INT = 267,
+    TYPE_DOUBLE = 268
   };
 #endif
 
@@ -120,12 +122,13 @@ union YYSTYPE
 {
 #line 5 "src/ciLisp.y" /* yacc.c:355  */
 
+    int ival;
     double dval;
     char *sval;
     struct ast_node *astNode;
     struct symbol_table_node  *symbolTableNode
 
-#line 129 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:355  */
+#line 132 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -138,11 +141,11 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED  */
+#endif /* !YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CI_LISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED  */
 
 /* Copy the second part of user declarations.  */
 
-#line 146 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:358  */
+#line 149 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -382,23 +385,23 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  14
+#define YYFINAL  17
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   29
+#define YYLAST   41
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  12
+#define YYNTOKENS  14
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  8
+#define YYNNTS  9
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  16
+#define YYNRULES  21
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  31
+#define YYNSTATES  40
 
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   266
+#define YYMAXUTOK   268
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -433,15 +436,16 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10,    11
+       5,     6,     7,     8,     9,    10,    11,    12,    13
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    21,    21,    30,    33,    36,    40,    43,    47,    54,
-      58,    64,    68,    74,    80,    84,    90
+       0,    23,    23,    32,    35,    38,    42,    45,    49,    56,
+      60,    64,    68,    74,    78,    84,    90,    94,   100,   104,
+     110,   113
 };
 #endif
 
@@ -451,8 +455,9 @@ static const yytype_uint8 yyrline[] =
 static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "FUNC", "SYMBOL", "INT", "DOUBLE",
-  "LPAREN", "RPAREN", "EOL", "QUIT", "LET", "$accept", "program", "s_expr",
-  "number", "f_expr", "let_section", "let_list", "let_elem", YY_NULLPTR
+  "LPAREN", "RPAREN", "EOL", "QUIT", "LET", "TYPE_INT", "TYPE_DOUBLE",
+  "$accept", "program", "s_expr", "number", "f_expr", "let_section",
+  "let_list", "let_elem", "type", YY_NULLPTR
 };
 #endif
 
@@ -462,14 +467,14 @@ static const char *const yytname[] =
 static const yytype_uint16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266
+     265,   266,   267,   268
 };
 # endif
 
-#define YYPACT_NINF -12
+#define YYPACT_NINF -15
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-12)))
+  (!!((Yystate) == (-15)))
 
 #define YYTABLE_NINF -1
 
@@ -480,10 +485,10 @@ static const yytype_uint16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      14,   -12,   -12,   -12,   -12,    19,   -12,     1,    -5,   -12,
-     -12,    14,     0,    14,   -12,   -12,     2,     9,     6,    15,
-     -12,    17,    23,   -12,   -12,   -12,   -12,   -12,    14,    20,
-     -12
+      19,   -15,   -15,   -15,   -15,    27,   -15,   -15,   -15,     1,
+      -3,   -15,   -15,    -2,    19,     2,    19,   -15,   -15,   -15,
+     -15,     4,     8,    30,    10,   -15,    13,    23,   -15,   -15,
+     -15,   -15,   -15,    19,    24,    25,    19,   -15,    31,   -15
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -491,22 +496,22 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     8,     3,     9,    10,     0,     7,     0,     0,     5,
-       6,     0,     0,     0,     1,     2,     0,     0,     0,     0,
-      11,     0,     0,    14,    13,    15,     4,    12,     0,     0,
-      16
+       0,     8,     3,     9,    10,     0,     7,    20,    21,     0,
+       0,     5,     6,     0,     0,     0,     0,     1,     2,    11,
+      12,     0,     0,     0,     0,    13,     0,     0,    16,    15,
+      17,     4,    14,     0,     0,     0,     0,    19,     0,    18
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -12,   -12,   -11,   -12,   -12,   -12,   -12,    11
+     -15,   -15,   -14,   -15,   -15,   -15,   -15,    17,    14
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     7,     8,     9,    10,    13,    18,    23
+      -1,     9,    10,    11,    12,    16,    23,    28,    13
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -514,40 +519,46 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-      16,    14,    19,     1,    15,    21,     2,     3,     4,     5,
-      20,    17,     6,    22,    24,     1,    22,    29,     2,     3,
-       4,     5,    11,    26,     6,    27,    12,    28,    30,    25
+      21,    17,    24,    19,    20,     1,    18,    26,     2,     3,
+       4,     5,    25,    22,     6,    27,     7,     8,    31,    35,
+       1,    32,    38,     2,     3,     4,     5,    33,    36,     6,
+      14,     7,     8,    37,    15,     7,     8,    27,    29,    39,
+      30,    34
 };
 
 static const yytype_uint8 yycheck[] =
 {
-      11,     0,    13,     1,     9,    16,     4,     5,     6,     7,
-       8,    11,    10,     7,     8,     1,     7,    28,     4,     5,
-       6,     7,     3,     8,    10,     8,     7,     4,     8,    18
+      14,     0,    16,     5,     6,     1,     9,    21,     4,     5,
+       6,     7,     8,    11,    10,     7,    12,    13,     8,    33,
+       1,     8,    36,     4,     5,     6,     7,     4,     4,    10,
+       3,    12,    13,     8,     7,    12,    13,     7,     8,     8,
+      23,    27
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     1,     4,     5,     6,     7,    10,    13,    14,    15,
-      16,     3,     7,    17,     0,     9,    14,    11,    18,    14,
-       8,    14,     7,    19,     8,    19,     8,     8,     4,    14,
-       8
+       0,     1,     4,     5,     6,     7,    10,    12,    13,    15,
+      16,    17,    18,    22,     3,     7,    19,     0,     9,     5,
+       6,    16,    11,    20,    16,     8,    16,     7,    21,     8,
+      21,     8,     8,     4,    22,    16,     4,     8,    16,     8
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    12,    13,    14,    14,    14,    14,    14,    14,    15,
-      15,    16,    16,    17,    18,    18,    19
+       0,    14,    15,    16,    16,    16,    16,    16,    16,    17,
+      17,    17,    17,    18,    18,    19,    20,    20,    21,    21,
+      22,    22
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
        0,     2,     2,     1,     4,     1,     1,     1,     1,     1,
-       1,     4,     5,     3,     2,     2,     4
+       1,     2,     2,     4,     5,     3,     2,     2,     5,     4,
+       1,     1
 };
 
 
@@ -1224,7 +1235,7 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 21 "src/ciLisp.y" /* yacc.c:1646  */
+#line 23 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: program ::= s_expr EOL\n");
         if ((yyvsp[-1].astNode)) {
@@ -1232,135 +1243,178 @@ yyreduce:
             freeNode((yyvsp[-1].astNode));
         }
     }
-#line 1236 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1247 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 30 "src/ciLisp.y" /* yacc.c:1646  */
+#line 32 "src/ciLisp.y" /* yacc.c:1646  */
     {
 	(yyval.astNode) = createSymbolNode((yyvsp[0].sval));
     }
-#line 1244 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1255 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 33 "src/ciLisp.y" /* yacc.c:1646  */
+#line 35 "src/ciLisp.y" /* yacc.c:1646  */
     {
     	(yyval.astNode) = linkSymbolTableToAST((yyvsp[-2].symbolTableNode),(yyvsp[-1].astNode));
     }
-#line 1252 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1263 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 36 "src/ciLisp.y" /* yacc.c:1646  */
+#line 38 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: s_expr ::= number\n");
         (yyval.astNode) = (yyvsp[0].astNode);
     }
-#line 1261 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1272 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 40 "src/ciLisp.y" /* yacc.c:1646  */
+#line 42 "src/ciLisp.y" /* yacc.c:1646  */
     {
         (yyval.astNode) = (yyvsp[0].astNode);
     }
-#line 1269 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1280 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 43 "src/ciLisp.y" /* yacc.c:1646  */
+#line 45 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: s_expr ::= QUIT\n");
         exit(EXIT_SUCCESS);
     }
-#line 1278 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1289 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 47 "src/ciLisp.y" /* yacc.c:1646  */
+#line 49 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: s_expr ::= error\n");
         yyerror("unexpected token");
         (yyval.astNode) = NULL;
     }
-#line 1288 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1299 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 54 "src/ciLisp.y" /* yacc.c:1646  */
+#line 56 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: number ::= INT\n");
         (yyval.astNode) = createNumberNode((yyvsp[0].dval), INT_TYPE);
     }
-#line 1297 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1308 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 58 "src/ciLisp.y" /* yacc.c:1646  */
+#line 60 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: number ::= DOUBLE\n");
         (yyval.astNode) = createNumberNode((yyvsp[0].dval), DOUBLE_TYPE);
     }
-#line 1306 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1317 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 11:
 #line 64 "src/ciLisp.y" /* yacc.c:1646  */
     {
-        fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr RPAREN\n");
-        (yyval.astNode) = createFunctionNode((yyvsp[-2].sval), (yyvsp[-1].astNode), NULL);
+        fprintf(stderr, "yacc: number ::= CAST INT\n");
+        (yyval.astNode) = createNumberNode((yyvsp[0].dval), (yyvsp[-1].ival));
     }
-#line 1315 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1326 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 12:
 #line 68 "src/ciLisp.y" /* yacc.c:1646  */
     {
-        fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr expr RPAREN\n");
-        (yyval.astNode) = createFunctionNode((yyvsp[-3].sval), (yyvsp[-2].astNode), (yyvsp[-1].astNode));
+        fprintf(stderr, "yacc: number ::= CAST DOUBLE\n");
+        (yyval.astNode) = createNumberNode((yyvsp[0].dval), (yyvsp[-1].ival));
     }
-#line 1324 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1335 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 13:
 #line 74 "src/ciLisp.y" /* yacc.c:1646  */
     {
-	fprintf(stderr, "yacc: let_section ::= LPAREN let_list RPAREN\n");
-	(yyval.symbolTableNode) = (yyvsp[-1].symbolTableNode);
+        fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr RPAREN\n");
+        (yyval.astNode) = createFunctionNode((yyvsp[-2].sval), (yyvsp[-1].astNode), NULL);
     }
-#line 1333 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1344 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 80 "src/ciLisp.y" /* yacc.c:1646  */
+#line 78 "src/ciLisp.y" /* yacc.c:1646  */
     {
-    	fprintf(stderr, "yacc: let_list ::= let let_elem\n");
-    	(yyval.symbolTableNode) = (yyvsp[0].symbolTableNode);
+        fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr expr RPAREN\n");
+        (yyval.astNode) = createFunctionNode((yyvsp[-3].sval), (yyvsp[-2].astNode), (yyvsp[-1].astNode));
     }
-#line 1342 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1353 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 15:
 #line 84 "src/ciLisp.y" /* yacc.c:1646  */
     {
-    	fprintf(stderr, "yacc: let_list ::= let_list let_elem\n");
-    	(yyval.symbolTableNode) = linkSymbolNode((yyvsp[0].symbolTableNode),(yyvsp[-1].symbolTableNode));
+	fprintf(stderr, "yacc: let_section ::= LPAREN let_list RPAREN\n");
+	(yyval.symbolTableNode) = (yyvsp[-1].symbolTableNode);
     }
-#line 1351 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1362 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
   case 16:
 #line 90 "src/ciLisp.y" /* yacc.c:1646  */
     {
-	fprintf(stderr, "yacc: let_elm ::= LPAREN symbol expr RPAREN\n");
-    	(yyval.symbolTableNode) = createSymbolTableNode((yyvsp[-2].sval),(yyvsp[-1].astNode));
+    	fprintf(stderr, "yacc: let_list ::= let let_elem\n");
+    	(yyval.symbolTableNode) = (yyvsp[0].symbolTableNode);
     }
-#line 1360 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1371 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+    break;
+
+  case 17:
+#line 94 "src/ciLisp.y" /* yacc.c:1646  */
+    {
+    	fprintf(stderr, "yacc: let_list ::= let_list let_elem\n");
+    	(yyval.symbolTableNode) = linkSymbolNode((yyvsp[0].symbolTableNode),(yyvsp[-1].symbolTableNode));
+    }
+#line 1380 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+    break;
+
+  case 18:
+#line 100 "src/ciLisp.y" /* yacc.c:1646  */
+    {
+	fprintf(stderr, "yacc: let_elm ::= LPAREN symbol expr RPAREN\n");
+    	(yyval.symbolTableNode) = createSymbolTableNode((yyvsp[-2].sval),(yyvsp[-1].astNode),(yyvsp[-3].ival));
+    }
+#line 1389 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+    break;
+
+  case 19:
+#line 104 "src/ciLisp.y" /* yacc.c:1646  */
+    {
+      	fprintf(stderr, "yacc: let_elm ::= LPAREN symbol expr RPAREN\n");
+          	(yyval.symbolTableNode) = createSymbolTableNode((yyvsp[-2].sval),(yyvsp[-1].astNode),NO_TYPE);
+    }
+#line 1398 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+    break;
+
+  case 20:
+#line 110 "src/ciLisp.y" /* yacc.c:1646  */
+    {
+    	(yyval.ival) = INT_TYPE;
+    }
+#line 1406 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+    break;
+
+  case 21:
+#line 113 "src/ciLisp.y" /* yacc.c:1646  */
+    {
+    	(yyval.ival) = DOUBLE_TYPE;
+    }
+#line 1414 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
 
 
-#line 1364 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
+#line 1418 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1588,6 +1642,6 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 94 "src/ciLisp.y" /* yacc.c:1906  */
+#line 117 "src/ciLisp.y" /* yacc.c:1906  */
 
 

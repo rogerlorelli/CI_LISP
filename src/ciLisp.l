@@ -11,6 +11,7 @@ symbol {letter}+
 digit [0-9]
 int [+-]?{digit}+
 double [+-]?{digit}\.{digit}*
+number [type] int | [type] double
 func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"max"|"min"
 
 %%
@@ -25,6 +26,14 @@ func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"
     yylval.dval = strtod(yytext, NULL);
     fprintf(stderr, "lex: DOUBLE dval = %lf\n", yylval.dval);
     return DOUBLE;
+    }
+
+"int" {
+    return TYPE_INT;
+    }
+
+"double" {
+    return TYPE_DOUBLE;
     }
 
 "let" {

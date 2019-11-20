@@ -194,16 +194,25 @@ RET_VAL evalSymbNode(AST_NODE *symbNode)
 
     RET_VAL result = {INT_TYPE, NAN};
     AST_NODE *outerNode = symbNode;
-    bool found = false;
-    while(outerNode != NULL && !found)
+    while(outerNode != NULL)
     {
         SYMBOL_TABLE_NODE *currNode = outerNode->symbolTable;
-        while(currNode != NULL && !found)
+        while(currNode != NULL)
         {
             if(strcmp(symbNode->data.symbol.ident,currNode->ident) == 0)
             {
                 result = eval(currNode->val);
-                found = !found;
+                if(outerNode->symbolTable->val_type == INT_TYPE)
+                {
+                    result.value.dval = lround(result.value.dval);
+                    result.type = INT_TYPE;
+                    printf("WARNING: precision loss in the assignment for variable %s\n",outerNode->symbolTable->ident);
+                }
+                else if(outerNode->symbolTable->val_type == INT_TYPE)
+                {
+                    result.type = DOUBLE_TYPE;
+                }
+                return result;
             }
            currNode = currNode->next;
         }
@@ -465,7 +474,7 @@ NUM_TYPE numTypeHelper1(RET_VAL *op1)
 // prints the type and value of a RET_VAL
 void printRetVal(RET_VAL val)
 {
-    char* numNames[] = {"INT_TYPE","DOUBLE_TYPE"};
+    char* numNames[] = {"NO_TYPE","INT_TYPE","DOUBLE_TYPE"};
     // TODO print the type and value of the value passed in. - done
     printf("TYPE: %s\n",numNames[val.type]);
     if(val.type == INT_TYPE)
@@ -478,7 +487,7 @@ void printRetVal(RET_VAL val)
     }
 }
 
-SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1)
+SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1,NUM_TYPE type)
 {
     SYMBOL_TABLE_NODE *node;
     size_t nodeSize;
@@ -487,7 +496,7 @@ SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1)
     nodeSize = sizeof(SYMBOL_TABLE_NODE);
     if ((node = calloc(nodeSize, 1)) == NULL)
         yyerror("Memory allocation failed!");
-
+    node->val_type = type;
     node->ident = calloc(sizeof(id), 1);
     strcpy(node->ident,id);
     node->val = op1;

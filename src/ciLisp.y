@@ -3,6 +3,7 @@
 %}
 
 %union {
+    int ival;
     double dval;
     char *sval;
     struct ast_node *astNode;
@@ -11,10 +12,11 @@
 
 %token <sval> FUNC SYMBOL
 %token <dval> INT DOUBLE
-%token LPAREN RPAREN EOL QUIT LET
+%token LPAREN RPAREN EOL QUIT LET TYPE_INT TYPE_DOUBLE
 
 %type <astNode> s_expr f_expr number
 %type <symbolTableNode> let_section let_elem let_list
+%type <ival> type
 %%
 
 program:
@@ -58,6 +60,14 @@ number:
     | DOUBLE {
         fprintf(stderr, "yacc: number ::= DOUBLE\n");
         $$ = createNumberNode($1, DOUBLE_TYPE);
+    }
+    | type INT{
+        fprintf(stderr, "yacc: number ::= CAST INT\n");
+        $$ = createNumberNode($2, $1);
+    }
+    | type DOUBLE{
+        fprintf(stderr, "yacc: number ::= CAST DOUBLE\n");
+        $$ = createNumberNode($2, $1);
     };
 
 f_expr:
@@ -87,9 +97,22 @@ let_list:
     };
 
 let_elem:
-    LPAREN SYMBOL s_expr RPAREN {
+    LPAREN type SYMBOL s_expr RPAREN {
 	fprintf(stderr, "yacc: let_elm ::= LPAREN symbol expr RPAREN\n");
-    	$$ = createSymbolTableNode($2,$3);
+    	$$ = createSymbolTableNode($3,$4,$2);
+    }
+    | LPAREN SYMBOL s_expr RPAREN {
+      	fprintf(stderr, "yacc: let_elm ::= LPAREN symbol expr RPAREN\n");
+          	$$ = createSymbolTableNode($2,$3,NO_TYPE);
     };
+
+type:
+    TYPE_INT {
+    	$$ = INT_TYPE;
+    }
+    | TYPE_DOUBLE {
+    	$$ = DOUBLE_TYPE;
+    }
+
 %%
 

@@ -30,8 +30,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED
-# define YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED
+#ifndef YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CI_LISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED
+# define YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CI_LISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
 # define YYDEBUG 0
@@ -53,7 +53,9 @@ extern int yydebug;
     RPAREN = 263,
     EOL = 264,
     QUIT = 265,
-    LET = 266
+    LET = 266,
+    TYPE_INT = 267,
+    TYPE_DOUBLE = 268
   };
 #endif
 
@@ -64,12 +66,13 @@ union YYSTYPE
 {
 #line 5 "src/ciLisp.y" /* yacc.c:1909  */
 
+    int ival;
     double dval;
     char *sval;
     struct ast_node *astNode;
     struct symbol_table_node  *symbolTableNode
 
-#line 73 "/home/roger/Desktop/COMP-232/ciLisp/cmake-build-debug/ciLispParser.h" /* yacc.c:1909  */
+#line 76 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -82,4 +85,4 @@ extern YYSTYPE yylval;
 
 int yyparse (void);
 
-#endif /* !YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED  */
+#endif /* !YY_YY_HOME_ROGER_DESKTOP_COMP_232_CILISP_CI_LISP_CMAKE_BUILD_DEBUG_CILISPPARSER_H_INCLUDED  */
