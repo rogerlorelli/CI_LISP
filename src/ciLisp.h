@@ -75,9 +75,8 @@ typedef NUM_AST_NODE RET_VAL;
 // Node to store a function call with its inputs
 typedef struct {
     OPER_TYPE oper;
-    char* ident; // only needed for custom functions
-    struct ast_node *op1;
-    struct ast_node *op2;
+    char *name;
+    struct ast_node *opList;
 } FUNC_AST_NODE;
 
 typedef struct symbol_table_node {
@@ -102,9 +101,8 @@ typedef struct ast_node {
         FUNC_AST_NODE function;
         SYMBOL_AST_NODE symbol;
     } data;
+    struct ast_node *next;
 } AST_NODE;
-
-
 
 SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1,NUM_TYPE type);
 
@@ -114,9 +112,11 @@ AST_NODE *linkSymbolTableToAST(SYMBOL_TABLE_NODE *symbNode, AST_NODE *node);
 
 AST_NODE *createSymbolNode(char *id);
 
+AST_NODE *linkASTNodes(AST_NODE *node1, AST_NODE *node2);
+
 AST_NODE *createNumberNode(double value, NUM_TYPE type);
 
-AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1, AST_NODE *op2);
+AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1);
 
 void freeNode(AST_NODE *node);
 

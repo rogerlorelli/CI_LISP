@@ -89,7 +89,7 @@ AST_NODE *createNumberNode(double value, NUM_TYPE type)
 //      - An OPER_TYPE (the enum identifying the specific function being called)
 //      - 2 AST_NODEs, the operands
 // SEE: AST_NODE, FUNC_AST_NODE, AST_NODE_TYPE.
-AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1, AST_NODE *op2)
+AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1)
 {
     AST_NODE *node;
     size_t nodeSize;
@@ -109,21 +109,18 @@ AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1, AST_NODE *op2)
     node->data.function.oper = resolveFunc(funcName);
     if(node->data.function.oper == CUSTOM_OPER)
     {
-        node->data.function.ident = funcName;
+        node->data.function.name = funcName;
     }
     else
     {
         free(funcName);
     }
-    node->data.function.op1 = op1;
-    node->data.function.op2 = op2;
-    if(op1 != NULL)
+    node->data.function.opList = op1;
+    AST_NODE *currNode = op1;
+    while(currNode != NULL)
     {
-        node->data.function.op1->parent = node;
-    }
-    if(op2 != NULL)
-    {
-        node->data.function.op2->parent = node;
+        currNode->parent = node;
+        currNode = currNode->next;
     }
     return node;
 }
@@ -140,13 +137,19 @@ void freeNode(AST_NODE *node)
     if (node->type == FUNC_NODE_TYPE)
     {
         // Recursive calls to free child nodes
-        freeNode(node->data.function.op1);
-        freeNode(node->data.function.op2);
+        AST_NODE *currNode = node->next;
+        AST_NODE *prevNode;
+        while(currNode != NULL)
+        {
+            prevNode = currNode;
+            currNode = currNode->next;
+            freeNode(prevNode);
+        }
 
         // Free up identifier string if necessary
         if (node->data.function.oper == CUSTOM_OPER)
         {
-            free(node->data.function.ident);
+            free(node->data.function.name);
         }
     }
     if (node->type == SYM_NODE_TYPE)
@@ -250,70 +253,83 @@ RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode)
 
     // TODO populate result with the result of running the function on its operands.
     // SEE: AST_NODE, AST_NODE_TYPE, FUNC_AST_NODE
-    RET_VAL op1 = eval(funcNode->op1);
-    RET_VAL op2 = eval(funcNode->op2);
-    switch(funcNode->oper)
-    {
-        case NEG_OPER:
-            result = negHelper(&op1);
-            break;
-        case ABS_OPER:
-            result.value.dval = fabs(funcNode->op1->data.number.value.dval);
-            result.type = funcNode->op1->data.number.type;
-            break;
-        case EXP_OPER:
-            result.value.dval = exp(funcNode->op1->data.number.value.dval);
-            result.type = numTypeHelper1(&op1);
-            break;
-        case SQRT_OPER:
-            result = sqrtHelper(&op1);
-            break;
-        case ADD_OPER:
-            result = addHelper(&op1,&op2);
-            break;
-        case SUB_OPER:
-            result = subHelper(&op1,&op2);
-            break;
-        case MULT_OPER:
-            result = multHelper(&op1,&op2);
-            break;
-        case DIV_OPER:
-            result = divHelper(&op1,&op2);
-            break;
-        case REMAINDER_OPER:
-            result = remHelper(&op1,&op2);
-            break;
-        case LOG_OPER:
-            result.value.dval = log(op1.value.dval);
-            result.type = numTypeHelper1(&op1);
-            break;
-        case POW_OPER:
-            result = powHelper(&op1,&op2);
-            break;
-        case MAX_OPER:
-            result = maxHelper(&op1,&op2);
-            break;
-        case MIN_OPER:
-            result = minHelper(&op1,&op2);
-            break;
-        case EXP2_OPER:
-            result.value.dval = exp2(op1.value.dval);
-            result.type = op1.type;
-            break;
-        case CBRT_OPER:
-            result = cbrtHelper(&op1);
-            break;
-        case HYPOT_OPER:
-            result = hypotHelper(&op1,&op2);
-            break;
-        case PRINT_OPER:
-            printRetVal(op1);
-            result = op1;
-            break;
-        default:
-            printf("Some other operation!\n");
+    AST_NODE *currNode = funcNode->opList;
+    RET_VAL op1 = eval(currNode);
+    currNode = currNode->next;
+    RET_VAL op2 = eval(currNode);
+    do {
+        switch (funcNode->oper) {
+            case NEG_OPER:
+                result = negHelper(&op1);
+                break;
+            case ABS_OPER:
+                result.value.dval = fabs(op1.value.dval);
+                result.type = op1.type;
+                break;
+            case EXP_OPER:
+                result.value.dval = exp(op1.value.dval);
+                result.type = numTypeHelper1(&op1);
+                break;
+            case SQRT_OPER:
+                result = sqrtHelper(&op1);
+                break;
+            case ADD_OPER:
+                result = addHelper(&op1, &op2);
+                break;
+            case SUB_OPER:
+                result = subHelper(&op1, &op2);
+                break;
+            case MULT_OPER:
+                result = multHelper(&op1, &op2);
+                break;
+            case DIV_OPER:
+                result = divHelper(&op1, &op2);
+                break;
+            case REMAINDER_OPER:
+                result = remHelper(&op1, &op2);
+                break;
+            case LOG_OPER:
+                result.value.dval = log(op1.value.dval);
+                result.type = numTypeHelper1(&op1);
+                break;
+            case POW_OPER:
+                result = powHelper(&op1, &op2);
+                break;
+            case MAX_OPER:
+                result = maxHelper(&op1, &op2);
+                break;
+            case MIN_OPER:
+                result = minHelper(&op1, &op2);
+                break;
+            case EXP2_OPER:
+                result.value.dval = exp2(op1.value.dval);
+                result.type = op1.type;
+                break;
+            case CBRT_OPER:
+                result = cbrtHelper(&op1);
+                break;
+            case HYPOT_OPER:
+                result = hypotHelper(&op1, &op2);
+                break;
+            case PRINT_OPER:
+                printRetVal(op1);
+                if(currNode != NULL)
+                {
+                    op1 = op2;
+                }
+                result = op1;
+                break;
+            default:
+                printf("Some other operation!\n");
 
-    }
+        }
+        if(currNode != NULL)
+        {
+            currNode = currNode->next;
+            op2 = eval(currNode);
+        }
+        op1 = result;
+    }  while (currNode != NULL);
     return result;
 }
 RET_VAL negHelper(RET_VAL *op1)
@@ -488,7 +504,7 @@ void printRetVal(RET_VAL val)
     }
     else
     {
-        printf("VALUE: %.4f\n",val.value.dval);
+        printf("VALUE: %.2f\n",val.value.dval);
     }
 }
 
@@ -527,6 +543,12 @@ SYMBOL_TABLE_NODE *linkSymbolNode(SYMBOL_TABLE_NODE *node1, SYMBOL_TABLE_NODE *n
 {
     node2->next = node1;
     return node2;
+}
+
+AST_NODE *linkASTNodes(AST_NODE *node1, AST_NODE *node2)
+{
+    node1->next = node2;
+    return node1;
 }
 
 AST_NODE *linkSymbolTableToAST(SYMBOL_TABLE_NODE *symbNode, AST_NODE *node)

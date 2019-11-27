@@ -14,7 +14,7 @@
 %token <dval> INT DOUBLE
 %token LPAREN RPAREN EOL QUIT LET TYPE_INT TYPE_DOUBLE
 
-%type <astNode> s_expr f_expr number
+%type <astNode> s_expr s_expr_list f_expr number
 %type <symbolTableNode> let_section let_elem let_list
 %type <ival> type
 %%
@@ -71,13 +71,17 @@ number:
     };
 
 f_expr:
-    LPAREN FUNC s_expr RPAREN {
-        fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr RPAREN\n");
-        $$ = createFunctionNode($2, $3, NULL);
+    LPAREN FUNC s_expr_list RPAREN {
+    	fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr RPAREN\n");
+    	$$ = createFunctionNode($2, $3);
+    };
+
+s_expr_list:
+    s_expr s_expr_list {
+	$$ = linkASTNodes($1,$2);
     }
-    | LPAREN FUNC s_expr s_expr RPAREN {
-        fprintf(stderr, "yacc: s_expr ::= LPAREN FUNC expr expr RPAREN\n");
-        $$ = createFunctionNode($2, $3, $4);
+    | s_expr {
+	$$ = $1;
     };
 
 let_section:
@@ -103,7 +107,7 @@ let_elem:
     }
     | LPAREN SYMBOL s_expr RPAREN {
       	fprintf(stderr, "yacc: let_elm ::= LPAREN symbol expr RPAREN\n");
-          	$$ = createSymbolTableNode($2,$3,NO_TYPE);
+        $$ = createSymbolTableNode($2,$3,NO_TYPE);
     };
 
 type:
