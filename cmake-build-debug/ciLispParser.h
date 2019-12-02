@@ -55,7 +55,8 @@ extern int yydebug;
     QUIT = 265,
     LET = 266,
     TYPE_INT = 267,
-    TYPE_DOUBLE = 268
+    TYPE_DOUBLE = 268,
+    COND = 269
   };
 #endif
 
@@ -72,7 +73,7 @@ union YYSTYPE
     struct ast_node *astNode;
     struct symbol_table_node  *symbolTableNode
 
-#line 76 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.h" /* yacc.c:1909  */
+#line 77 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

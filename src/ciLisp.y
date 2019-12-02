@@ -12,7 +12,7 @@
 
 %token <sval> FUNC SYMBOL
 %token <dval> INT DOUBLE
-%token LPAREN RPAREN EOL QUIT LET TYPE_INT TYPE_DOUBLE
+%token LPAREN RPAREN EOL QUIT LET TYPE_INT TYPE_DOUBLE COND
 
 %type <astNode> s_expr s_expr_list f_expr number
 %type <symbolTableNode> let_section let_elem let_list
@@ -35,7 +35,10 @@ s_expr:
     | LPAREN let_section s_expr RPAREN {
     	$$ = linkSymbolTableToAST($2,$3);
     }
-    | number {
+    //| LPAREN COND s_expr s_expr s_expr RPAREN {
+        //$$ =
+    //}
+    |number {
         fprintf(stderr, "yacc: s_expr ::= number\n");
         $$ = $1;
     }

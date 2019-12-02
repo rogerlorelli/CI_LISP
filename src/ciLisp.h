@@ -44,6 +44,8 @@ typedef enum oper {
     CUSTOM_OPER =255
 } OPER_TYPE;
 
+
+
 OPER_TYPE resolveFunc(char *);
 
 // Types of Abstract Syntax Tree nodes.
@@ -52,8 +54,15 @@ OPER_TYPE resolveFunc(char *);
 typedef enum {
     NUM_NODE_TYPE,
     FUNC_NODE_TYPE,
-    SYM_NODE_TYPE
+    SYM_NODE_TYPE,
+    COND_NODE_TYPE
 } AST_NODE_TYPE;
+
+typedef struct {
+    struct ast_node *cond;
+    struct ast_node *ifTrue; // to eval if cond is nonzero
+    struct ast_node *ifFalse; // to eval if cond is zero
+} COND_AST_NODE;
 
 // Types of numeric values
 typedef enum { NO_TYPE, INT_TYPE, DOUBLE_TYPE } NUM_TYPE;
@@ -100,6 +109,7 @@ typedef struct ast_node {
         NUM_AST_NODE number;
         FUNC_AST_NODE function;
         SYMBOL_AST_NODE symbol;
+        COND_AST_NODE condition;
     } data;
     struct ast_node *next;
 } AST_NODE;
@@ -124,6 +134,7 @@ RET_VAL eval(AST_NODE *node);
 RET_VAL evalNumNode(NUM_AST_NODE *numNode);
 RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode);
 RET_VAL evalSymbNode(AST_NODE *symbNode);
+RET_VAL evalCustomFuncNode(FUNC_AST_NODE *funcNode);
 
 void printRetVal(RET_VAL val);
 
