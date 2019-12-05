@@ -56,7 +56,8 @@ extern int yydebug;
     LET = 266,
     TYPE_INT = 267,
     TYPE_DOUBLE = 268,
-    COND = 269
+    COND = 269,
+    LAMBDA = 270
   };
 #endif
 
@@ -71,9 +72,10 @@ union YYSTYPE
     double dval;
     char *sval;
     struct ast_node *astNode;
-    struct symbol_table_node  *symbolTableNode
+    struct symbol_table_node  *symbolTableNode;
+    struct arg_table_node  *argTableNode
 
-#line 77 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.h" /* yacc.c:1909  */
+#line 79 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

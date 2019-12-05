@@ -37,11 +37,18 @@ func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"
     }
 
 "let" {
+    fprintf(stderr, "lex: LET\n");
     return LET;
     }
 
 "cond" {
+    fprintf(stderr, "lex: LPAREN\n");
     return COND;
+    }
+
+"lambda" {
+    fprintf(stderr, "lex: LAMBDA\n");
+    return LAMBDA;
     }
 
 "quit" {

@@ -44,7 +44,12 @@ typedef enum oper {
     CUSTOM_OPER =255
 } OPER_TYPE;
 
+typedef enum { VARIABLE_TYPE, LAMBDA_TYPE, ARG_TYPE } SYMBOL_TYPE;
 
+typedef struct stack_node {
+    struct ast_node *val;
+    struct stack_node *next;
+} STACK_NODE;
 
 OPER_TYPE resolveFunc(char *);
 
@@ -72,7 +77,6 @@ typedef struct {
     NUM_TYPE type;
     union{
         double dval;
-        long ival;
     } value;
 } NUM_AST_NODE;
 
@@ -89,11 +93,18 @@ typedef struct {
 } FUNC_AST_NODE;
 
 typedef struct symbol_table_node {
+    SYMBOL_TYPE type;
     NUM_TYPE val_type;
     char *ident;
     struct ast_node *val;
     struct symbol_table_node *next;
 } SYMBOL_TABLE_NODE;
+
+typedef struct arg_table_node {
+    char *ident;
+    NUM_AST_NODE value;
+    struct arg_table_node *next;
+} ARG_TABLE_NODE;
 
 typedef struct symbol_ast_node {
     char *ident;
@@ -104,6 +115,7 @@ typedef struct symbol_ast_node {
 typedef struct ast_node {
     AST_NODE_TYPE type;
     SYMBOL_TABLE_NODE *symbolTable;
+    ARG_TABLE_NODE *arg_list;
     struct ast_node *parent;
     union {
         NUM_AST_NODE number;
@@ -112,11 +124,14 @@ typedef struct ast_node {
         COND_AST_NODE condition;
     } data;
     struct ast_node *next;
+    bool isCustom;
 } AST_NODE;
 
-SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1,NUM_TYPE type);
+AST_NODE *createCondASTNode(AST_NODE *condNode, AST_NODE *trueNode, AST_NODE *falseNode);
 
-SYMBOL_TABLE_NODE *linkSymbolNode(SYMBOL_TABLE_NODE *node1, SYMBOL_TABLE_NODE *node2);
+SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1, NUM_TYPE type);
+
+SYMBOL_TABLE_NODE *linkSymbolTableNode(SYMBOL_TABLE_NODE *node1, SYMBOL_TABLE_NODE *node2);
 
 AST_NODE *linkSymbolTableToAST(SYMBOL_TABLE_NODE *symbNode, AST_NODE *node);
 
@@ -128,32 +143,26 @@ AST_NODE *createNumberNode(double value, NUM_TYPE type);
 
 AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1);
 
+SYMBOL_TABLE_NODE *createCustomFunctionNode(NUM_TYPE numType, char *funcName, ARG_TABLE_NODE *arg_list, AST_NODE *funcNode);
+
+ARG_TABLE_NODE *createArgNode(char *id);
+
+ARG_TABLE_NODE *linkArgList(char* id1, ARG_TABLE_NODE *node2);
+
 void freeNode(AST_NODE *node);
 
 RET_VAL eval(AST_NODE *node);
 RET_VAL evalNumNode(NUM_AST_NODE *numNode);
-RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode);
+RET_VAL evalFuncNode(AST_NODE *funcNode);
+RET_VAL evalCondNode(COND_AST_NODE *condNode);
 RET_VAL evalSymbNode(AST_NODE *symbNode);
-RET_VAL evalCustomFuncNode(FUNC_AST_NODE *funcNode);
+RET_VAL evalCustomFunc(AST_NODE *funcNode);
+RET_VAL readHelper(AST_NODE *funcNode);
 
 void printRetVal(RET_VAL val);
 
-RET_VAL negHelper(RET_VAL *op1);
-RET_VAL absHelper(RET_VAL *op1);
-RET_VAL expHelper(RET_VAL *op1);
-RET_VAL sqrtHelper(RET_VAL *op1);
-RET_VAL addHelper(RET_VAL *op1,RET_VAL *op2);
-RET_VAL subHelper(RET_VAL *op1,RET_VAL *op2);
-RET_VAL multHelper(RET_VAL *op1,RET_VAL *op2);
-RET_VAL divHelper(RET_VAL *op1,RET_VAL *op2);
-RET_VAL remHelper(RET_VAL *op1,RET_VAL *op2);
 RET_VAL maxHelper(RET_VAL *op1,RET_VAL *op2);
 RET_VAL minHelper(RET_VAL *op1,RET_VAL *op2);
-RET_VAL logHelper(RET_VAL *op1);
-RET_VAL powHelper(RET_VAL *op1,RET_VAL *op2);
-RET_VAL exp2Helper(RET_VAL *op1);
-RET_VAL cbrtHelper(RET_VAL *op1);
-RET_VAL hypotHelper(RET_VAL *op1,RET_VAL *op2);
 
 NUM_TYPE numTypeHelper1(RET_VAL *op1);
 NUM_TYPE numTypeHelper2(RET_VAL *op1,RET_VAL *op2);
