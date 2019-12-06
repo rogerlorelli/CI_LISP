@@ -44,12 +44,8 @@ typedef enum oper {
     CUSTOM_OPER =255
 } OPER_TYPE;
 
-typedef enum { VARIABLE_TYPE, LAMBDA_TYPE, ARG_TYPE } SYMBOL_TYPE;
+typedef enum {LAMBDA_TYPE} SYMBOL_TYPE;
 
-typedef struct stack_node {
-    struct ast_node *val;
-    struct stack_node *next;
-} STACK_NODE;
 
 OPER_TYPE resolveFunc(char *);
 
@@ -75,9 +71,7 @@ typedef enum { NO_TYPE, INT_TYPE, DOUBLE_TYPE } NUM_TYPE;
 // Node to store a number.
 typedef struct {
     NUM_TYPE type;
-    union{
-        double dval;
-    } value;
+    double value;
 } NUM_AST_NODE;
 
 // Values returned by eval function will be numbers with a type.
@@ -163,6 +157,8 @@ void printRetVal(RET_VAL val);
 
 RET_VAL maxHelper(RET_VAL *op1,RET_VAL *op2);
 RET_VAL minHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL addHelper(AST_NODE *op_list);
+RET_VAL multHelper(AST_NODE *op_list);
 
 NUM_TYPE numTypeHelper1(RET_VAL *op1);
 NUM_TYPE numTypeHelper2(RET_VAL *op1,RET_VAL *op2);
