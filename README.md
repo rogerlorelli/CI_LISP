@@ -1,3 +1,4 @@
+
 # CILISP README
 
                                                    ### Tasks Completetd ###
@@ -318,18 +319,18 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 			- a parent, to reference any "higher" ast_nodes that may contain a symbol_table_node list
 			- a SYMBOL_AST_NODE field to the union along side the number and function ast nodes.
 	- **createSymbolTableNode()**
-			- creates an instance of the new SYMBOL_TABLE_NODE 
-			- sets the value type to the type passed in the parameters
-			- sets the ident to the passed parametere
-			- sets the value to the ast_node passed.
-		- **linkSymbolTableNode()**
-			- links the next field of the second node passed to the first node and returns the pointer to the second node.
-		- **linkSymbolTableToAST()**
-			- links the symbol list to the ast_node
-		- **createSymbolNode()** 
-			- creates an instance of the SYMBOL_AST_NODE with its ident set by the passed string.
-		- **evalSymbolNode**
-			- called by eval(), searches the symbolTableNode list of the AST_NODE and it's parent node.
+		- creates an instance of the new SYMBOL_TABLE_NODE 
+		- sets the value type to the type passed in the parameters
+		- sets the ident to the passed parametere
+		- sets the value to the ast_node passed.
+	- **linkSymbolTableNode()**
+		- links the next field of the second node passed to the first node and returns the pointer to the second node.
+	- **linkSymbolTableToAST()**
+		- links the symbol list to the ast_node
+	- **createSymbolNode()** 
+		- creates an instance of the SYMBOL_AST_NODE with its ident set by the passed string.
+	- **evalSymbolNode**
+		- called by eval(), searches the symbolTableNode list of the AST_NODE and it's parent node.
 			- if the symbol is found, evaluates the node's value, an ast_node itself, and returns the information in a RET_VAL
 			- if the symbol is not found prints an error message and returns a RET_VAL with value nan. 
 	
@@ -339,7 +340,6 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
 - **eval**
 	- adds support for the evaulation of the new SYMBOL_AST_NODE using evaSymbolNode().
-	- 
 
 **Testing functionality code output**
 //TODO
@@ -370,131 +370,124 @@ Adds a print operation into the function list.
 - **ciLisp.c**
 	- evalFunctionNode
 		- added print to switch options
+		
 **Testing functionality code output**
 ## Task 5
-This task for me was straight forward and I knew intuitivley what I needed to change to make this work. 
-
-1. **Yacc file**
-
-	*At this point I am starting to get the hang of how to add code to Lisp now. I have been always adding to the yacc or lex files first so this is how I started with this one too
-	 
-	* First checking the changed grammar given to us then adding those changes to the yacc file 
-	
-	* **f_expr** - Changed the fexpr to only accept a FUNC and a s_expr_list now it only takes two parameters instead of 3 
-	* **s _ expr_list**	- Made a new ast type called s_expr _list and using the directions given in task 5 fully extended the grammar for this type
-2. **lex files**
-
-	* no changes were made to this during task 5
-3. **FUNC_ AST_NODE**
-	
-	* We were asked to change this struct, it was first only supposed to take in two operands but we were asked to change that and to put in just one ast node called *opList.
-	* From this extension to the FUNC_ AST_ NODE i had to then go through all segments of code that previously used op1 and op2 and change them to opList and opList.next 
-4. **AST_ NODE**
-
-	* To allow creations of lists of s-expressions, a link next is added to AST_NODE
-	
-5. **Finding Arity**
-
-	* At this point we find out that we have three operation functions that are different than the other 20 or so that we are dealing with for this task. MULT_ OPER, ADD_ OPER AND PRINT _OPER
-	* To make things a little easier kieth and I came to a conclusion that seperating all the math functions that only have one operand to one pile and setting the math functions that take in two opoerands into another pile and setting the other three into their own place as well would make things easier to read
-	* this was accomplished with the helper function called **getArity()** this function sepereates all OPER_ TYPE to different FUNCTION_ ARITY enums calls
-6. **evalFuncNode**
-	* this function was heavily refractored and does not call the same thing it did previously
-	* now there are three cases in evalFuncNode a Unary, Binary and Nary case which all call other subroutines that are called evalUnary, evalBinary, and evalNary 
-7. **evalUnary**
-	
-	* In this helper method we go check if there are too few parameters and too many parameters before going into a switch statement 
-	* In this switch it segragates all math operations that only take in one operand.
-	* ther are 7 math functions so far that only take in one operand
-	* within each case we call more helper functions where all the math is actually going on
-8. **evalBinary**
-
-	* In this helper method we go check if there are too few parameters and too many parameters before going into a switch statement 
-	* In the switch it segragates all math operations that only take in two operands.
-	* there are 10 math functions so far that only take in two operands
-	* within each case we call more helper functions where all the math is actually going on
-
-9. **evalNary**
-	
-	* In this helper method we go check if there are too few parameters before going into a switch statement 
-	* In the switch it segragates all math operations that more than two operands.
-	* there are 3 math functions so far that take in more than 2
-	* within each case we call more helper functions where all the math is actually going on
-
-10. **add mult print**
-
- Now finally at this point i needed to fix the three functions that take in more than two operands they essentially are all the same code for each of the three as well. These three again are **MULT, ADD** and **PRINT** I go into there respective helper functions and change how the math works for each of them
-
-11. **freeNode**
-
-	* now that task 5 finally started working before moving onto the next task I free all allocated space for freeNode
-	* for this function I made about 4 small helper methods 
-	* freeSymTableNode, freeSymNode, freeFuncNode, freeFuncOpList which are all used within the freeNode() function this part is necessary to help free all the allocated space that we have been using this entire project.
-	* they recurively free the entore syntax tree and is only called after the execution of the code
+Implements the ability for the language to support an operand list of arbitrary size.
+- **Yacc file**
+	- **MOD**:
+		- **f_expr** 
+			- changed f_expr from 2 expressions, having 1 or 2 operands, to a single expression operand list on undetermined size.
+	- **NEW**	
+		- **s _ expr_list**
+			- new grammar that allows for single, multiple, and no s-expressions to be attached to a function expression.
+			
+- **ciLisp.h**
+	- **MOD**:
+		- **FUNC_ AST_NODE**
+			- **MOD**
+				- removed AST_NODEs op1 & op2 
+			- **NEW**
+				- replaced by op_list, an AST_NODE pointer, which will now link the list of the operands that are supposed to be evaluated and computed by the attached function.
+	- **NEW**
+		- **linkASTNode()**
+			- links the chain of ast_nodes that make up the op_list to each other, making the linked-list.
+		- **AST_ NODE**
+			- **NEW**
+				- added an AST_NODE pointer to the struct, allowing for the linking of AST_NODEs to act as an op_list.
+				
+- **ciLisp.c**
+	- **MOD**
+		- **createFunctionNode**
+			- modified, removing the operand parameters and replaced with an AST_NODE pointer op_list to be assigned to the new op_list field in the new func_ast_node. Traverses the list and sets the parent of each operand to this new node. 
+		- **evalFuncNode**
+			- modified to evaluate an op_list now instead of a set number of operands.
+			- prior helper methods were deconstructed and integrated back into the function except for the add and multiplication helpers. 
+				- ADD, MULT, and PRINT operations now have the ability to accept any number of operands.
+					- done by passing the helper methods the ast node containing the op_list and treating it like a linked list. The first pass will evaluate the first and second operands, the result will be assigned to the first operand, the second will evaluate the next operand in the list and the computation will repeat.   
+				- logic is now implemented to check for the minimum appropriate number of operands to compute an operation, printing an error message and exiting if the minimum is not met. There is also logic to check for too many operands being passed to any operations, that are not the previously mentioned ADD, Mult, or PRINT, printing a warning message, but will compute the operation once with the necessary operands.
 
 **Testing functionality code output**
 
-```
-(mult ((let (double a (print(add 4 5 2)))) (sub (sub 100 a) a 5)) 4 2.5)
-WARNING: too many parameters for the function sub
-=> Integer value is 11
+## Task 6
+- Adds the read function
+	- allows for user input 
+- Adds the rand function
+	- allows for random values
+- Adds conditional statements
+	- requires the addition of conditional evaluation functions
+		- lesser
+		- greater
+		- equal
+		
+- **Lex File**
+	- **MOD**
+		- adds the ability to parse a new keyword "cond" which will return a COND token.
+		- added rand, read, equal, less, and greater to the function name list so the function creation would recognize the function calls
 
-=> Integer value is 11
+- **Yacc File**
+	- **MOD**
+		- Changes the s-expression grammar to allow for conditional statements.
+			- cond keyword will start the statement, the following s-expr is the conditional function to check, the next s-expr is the expression that is evaluated if the conditional returned true, else the third expression is evaluated.
 
-Double Value 780.00
+- **ciLisp.h**
+	- **MOD**
+		- AST_NODE_TYPE
+			- added a condition node type to the enum list for use in eval().
+		- AST_NODE
+			- added a COND_AST_NODE to the union data, called condition. Will hold the three expressions for evaluation.
+	- **NEW**
+		- COND_AST_NODE
+			- contains three fields:
+				- cond
+					- conditional expression to decide which of the following expressions is evaluated
+				- ifTrue
+					- expression to evaluate if the conditional is true.
+				- ifFalse
+					- expression to evaluate if the conditional is false.
+			- all are ast_node pointers
+- **ciLisp.c**
+	- **MOD**
+		- **eval()**
+			- added support for calling evalCondNode() when needed.
+		- **evalFuncNode()**
+			- added functions:
+				- read
+					- reads a value from the user, changes the ast_node from a function node to a number node, in the number field of the data union the read in value is assigned to the value field and the type is dependent on whether or not the read value contained a decimal point.
+				- rand
+					- generates a random number from 0 to 1, changes the ast_node from a function node to a number node, in the number field of the data union the random value is assigned to the value field and the type is set as a double.
+				- greater
+					- returns 1 if the first operand is greater than the second operand, 0 if not.
+				- less
+					- returns 1 if the first operand is smaller than the second operand, 0 if not.
+				- equal
+					- returns 1 if the first operand is equal than the second operand, 0 if not.
+	- **NEW**
+		- **createCondNode()**
+			- creates an ast_node of COND_TYPE and assigns the provided expressions to the appropriate fields. Sets the parents of the expressions this node. 
+		- **evalCondNode()**
+			- creates a new RET_VAL and uses a switch statement, based on the evaluation of the conditional expression either the ifTrue expression will be evaluated and the value assigned to RET_VAL or the ifFalse expression will be.
+			- 
+ **Testing functionality code output**
+ //TODO
 
+## Task 7 & 8 & 9
+DEVELOPERS NOTE:
+Initially this task was supposed to be broken into three separate tasks, 2 required 1 optional, but I saw that it would be more logical to implement the end goal which removed the requirement of sections of 2 of the tasks. 
 
-> (add 1 2 3 4 5)
-Integer value is 15
-
-> ((let (int a 1)(double b 2))(print a b 3))
-=> Integer value is 1
-Double Value 2.00
-Integer value is 3
-
-> (add 1 2 3(sub 5 2))
-Integer value is 9
-
-```
-
-
-##Task 6 
-
-
-1. **yacc files** 
-	* went though and added the new COND token
-	* and also added a new ast node called s_expr_list
-	* after this i went on and extended the grammar given to us	
-
-**Testing functionality code output**
-
-
-
-
-
-	
-```
-> ((let (int a (read)) (double b (read)) (c (read)) (d (read))) (print a b c d))
-=> read := 3
-Integer value is 3
-read := 5.0
-Double Value 5.00
-read := 10
-Integer value is 10
-read := 5.175
-Double Value 5.17
-
-Double Value 5.17
-
-> ((let (a 0)) (cond (less (rand) 0.5) (add a 1) (sub a 1)))
-Integer value is 1
-
-> ((let (myA (read))(myB (rand)))(cond (less myA myB) (print myA) (print myB)))
-read := -1
-=> Integer value is -1
-
-Integer value is -1
+- Adds the ability to create user defined functions and allows tail-end recursive behavior.
 
 
-``` 		
- 		
+- **Lex File**
+	- added support for a new keyword "lambda" and the return of a new LAMBDA token.
+- **Yacc File**
+	- added support for the LAMBA token.
+		- **MOD**
+			- let_elem
+				- added a grammar that would allow the creation of a custom function, both type case and not, that uses the SYMBOL token for passing it's name, and the LAMBDA token to delineate that it is a custom function.
+		- **NEW**
+			- struct arg_table_node
+				- added to the union to allow for the return of arg_table_node pointers 
+			- arg_list
+				- a list of args, or the formal parameters, of the new custom function is any. The args are defined as symbols and follow the rules of such.
+- **ciLisp.h**
