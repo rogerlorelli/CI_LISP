@@ -481,6 +481,18 @@ VALUE: 120.00
 eval function WARNING: too many parameters for the function div
 TYPE: INT_TYPE
 VALUE: 0
+
+> (div 1.0 2 3 4 5 6 7 8 9)
+eval function WARNING: too many parameters for the function div
+TYPE: DOUBLE_TYPE
+VALUE: 0.50
+
+> (abs -5 2 3 6)
+eval function WARNING: too many parameters for the function abs
+TYPE: INT_TYPE
+VALUE: 5
+
+
 ## Task 6
 - Adds the read function
 	- allows for user input 
@@ -750,8 +762,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNjYxMTIxMCwxNTA0NTQ2NTc2LDQxND
-gwNDA5MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMDA0NjU1
-MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M1
-19
+eyJoaXN0b3J5IjpbOTA5NTUyNTQwLDE1MDQ1NDY1NzYsNDE0OD
+A0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUy
+NTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX
+0=
 -->
