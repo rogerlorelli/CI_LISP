@@ -290,6 +290,13 @@ Implements the execution/evaluation of simple mathematical operations on integer
 - (max -5 -1)
 	- TYPE: INT_TYPE
 	- VALUE: -1
+	
+- (neg (add (mult 5 2.0) (div 4.5 2)))
+	- TYPE: DOUBLE_TYPE
+	- VALUE: -12.25
+- (neg (add (mult 5 2) (div 4 2)))
+TYPE: INT_TYPE
+VALUE: -12
 ## TASK 2 Implementation
 Implements grammar to allow for variables, called symbols in ciLisp. Requires modification to the lex file, the Bison file, the ciLisp.h & .c files. 
 
@@ -525,5 +532,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTIyMDA3NjBdfQ==
+eyJoaXN0b3J5IjpbLTM3OTk2Njk3Nl19
 -->
