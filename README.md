@@ -592,6 +592,13 @@ VALUE: 1
 TYPE: INT_TYPE
 VALUE: 1
 
+> (rand)
+ERROR CHECKING PRINTING RAND: 0.84
+TYPE: DOUBLE_TYPE
+VALUE: 0.84
+
+
+
 	- Testing Prior Tasks
 
 		- Tests Tasks 1, 2 & 3
@@ -706,7 +713,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTYxODM2MjMsLTE5NDU1MzAzNjEsMT
-AwNDY1NTI1MiwxMjc2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUx
-OTM3ODNdfQ==
+eyJoaXN0b3J5IjpbNDE0ODA0MDkyLC0yMTE2MTgzNjIzLC0xOT
+Q1NTMwMzYxLDEwMDQ2NTUyNTIsMTI3Njg4MjU3MiwtMTA5MTc3
+Njc1NCwtNTY1MTkzNzgzXX0=
 -->
