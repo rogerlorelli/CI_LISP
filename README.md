@@ -331,10 +331,12 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 			- an ident string - for variable name
 - **ciLisp.c**
 	- **MOD**
-	- **createFunctionNode**
-		- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
-	- **eval**
-		- adds support for the evaulation of the new SYMBOL_AST_NODE using evaSymbolNode().
+		- **createFunctionNode()**
+			- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
+		- **createNumberNode()**
+			- adds a Boolean flag, if a number is type cast into 
+		- **eval()**
+			- adds support for the evaulation of the new SYMBOL_AST_NODE using evaSymbolNode().
 	- **NEW**
 		- **createSymbolTableNode()**
 			- creates an instance of the new SYMBOL_TABLE_NODE 
@@ -551,5 +553,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2NTE5Mzc4M119
+eyJoaXN0b3J5IjpbLTE1NTc2Mjc1NDYsLTU2NTE5Mzc4M119
 -->
