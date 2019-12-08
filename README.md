@@ -588,10 +588,16 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 5
 
-- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 ))
+- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 ))
 	- ERROR: too few parameters for the function gcd
 	- Process finished with exit code 1
  
+ - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55 55))
+	- eval custom function WARNING: too many parameters for the function gcd
+	- TYPE: INT_TYPE
+	- VALUE: 5
+
+
 - ((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
 => 9 
 => 8 
@@ -606,7 +612,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 => 0 
 	- TYPE: INT_TYPE
 	- VALUE: 0
-- **TESTING TYPE CASTING ON PASSED NUMBERS - TASK **
+- **TESTING TYPE CASTING - TASK 3**
+- ON PASSED 
 - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 	- TYPE: DOUBLE_TYPE
 	- VALUE: 5.00
@@ -637,6 +644,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQxNTQ5NDUxLDEwMDQ2NTUyNTIsMTI3Nj
-g4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbMTk0MDAyODk5NCwxMDA0NjU1MjUyLDEyNz
+Y4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
 -->
