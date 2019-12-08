@@ -310,26 +310,26 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 - **Yacc/Bison** file
 	- **MOD**
 	- extended the token to include the LET %token
+	- extended the grammar in the s-expr to include symbol and let_section
 	- **NEW**
-	* added symbol to the ast node %type 
-	* added let_section let_list let_elem to the symNode %type
-	* extended the grammar in the s-expr to include symbol and let_section
-	* let_section, let_list, let_elem and symbol were also added to the grammar in their own sections with appropriate definition function calls.
+	- added symbol to the ast node %type 
+	- added let_section let_list let_elem to the symNode %type
+	- let_section, let_list, let_elem and symbol were also added to the grammar in their own sections with appropriate definition function calls.
 
 - **ciLisp.h** file
-- extended the ciLisp.h file to support the modifications to the lex and bison files.
-	- modifications include the creation of or modifications to the following functions and structs:
+	- **MOD**
+	- **AST_NODE** 
+		- added:
+			-  a symbol_table_node to allow a linked list of variable definitions to be attached.
+			- a parent, to reference any "higher" ast_nodes that may contain a symbol_table_node list
+			- a SYMBOL_AST_NODE field to the union along side the number and function ast nodes.
 	- NEW: SYMBOL_TABLE_NODE
 		- an ident string
 		- a value field that holds an ast_node, so a value can be anything from another symbol to a number to a function
 		- a next field that references another symbol_table_node to create a linked list of variables.
 	- NEW: SYMBOL_AST_NODE
 		- an ident string
-	- MOD: AST_NODE 
-		- added:
-			-  a symbol_table_node to allow a linked list of variable definitions to be attached.
-			- a parent, to reference any "higher" ast_nodes that may contain a symbol_table_node list
-			- a SYMBOL_AST_NODE field to the union along side the number and function ast nodes.
+	
 	- **createSymbolTableNode()**
 		- creates an instance of the new SYMBOL_TABLE_NODE 
 		- sets the value type to the type passed in the parameters
@@ -534,5 +534,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4ODA2Nzc5Nl19
+eyJoaXN0b3J5IjpbMTg1ODQ4NDk4OF19
 -->
