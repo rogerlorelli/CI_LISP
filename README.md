@@ -594,6 +594,12 @@ VALUE: 1
 
 - Testing Prior Tasks
 
+> ((let (a b) (int b 2.5) (double c 3)) (equal (add a c) (div double 10 a)))
+WARNING: precision loss in the assignment for variable b
+WARNING: precision loss in the assignment for variable b
+TYPE: INT_TYPE
+VALUE: 1
+
 
 >
 ## Task 7 & 8 & 9
@@ -719,6 +725,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDU1MzAzNjEsMTAwNDY1NTI1MiwxMj
-c2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbLTE0NjEwMzk1MSwtMTk0NTUzMDM2MSwxMD
+A0NjU1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5
+Mzc4M119
 -->
