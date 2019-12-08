@@ -585,7 +585,16 @@ VALUE: 5
 ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 TYPE: DOUBLE_TYPE
 VALUE: 5.00
+
+((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
+WARNING: precision loss in the assignment for variable gcd
+TYPE: INT_TYPE
+VALUE: 5
+
+((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
+TYPE: INT_TYPE
+VALUE: 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjQ3NDA4NTcsMTI3Njg4MjU3MiwtMT
+eyJoaXN0b3J5IjpbLTE2MDcxMTY0OTksMTI3Njg4MjU3MiwtMT
 A5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
 -->
