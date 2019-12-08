@@ -574,16 +574,16 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 		- **createCustomFunctionNode()**
 			- unlike normal functions a custom function is stored as a symbol_table_node, the function name is the ident, the algorithm of the function is stored as an ast_node in the value field and the arg_list is attached to the ast_node's arg_list field. The isCustom flag is set to true, where is is normally false, and since the structure of the node is still a symbol_table_node it retains the num_type field so type casting is allowed.
 		- **evalCustomFunc()**
-			- called by evalFuncNode(), functions much like evalSymbolNode in that it searches the attached ast_node and it's parents for the symbol_table_node that contains the definition of what the function name is. If found a temporary arg_list is created and the arguments passed from the function call are evaluated and copied. This evaluation of the passed arguments before the custom function is evaluated is one of the key features that allows for this grammar to be tail-recursive. The temporary arg_list then transfers its values to the arg_list of the function definition, here is also where the error checking for the approriate number of parameters passed vs number of formal parameters happens. Finally the custom function definition is evaluated. 
+			- called by evalFuncNode(), functions much like evalSymbolNode() in that it searches the attached ast_node and it's parents for the symbol_table_node that contains the definition of what the function name is. If found a temporary arg_list is created and the arguments passed from the function call are evaluated and copied. This evaluation of the passed arguments before the custom function is evaluated is one of the key features that allows for this grammar to be tail-recursive. The temporary arg_list then transfers its values to the arg_list of the function definition, here is also where the error checking for the appropriate number of parameters passed vs number of formal parameters happens. Finally the custom function definition is evaluated. 
 			
 					
  **Testing functionality code output**
  - This set of tests will include capabilities from all tasks except Task3. 
-	- Task 1: use of remainder function
-	- Task 2: use of symbol variables
-	- Task 4: use of the print function
-	- Task 5: use of an arbitrary number of operations and the warnings that come from them if misused
-	 - Task 6: 
+	> Task 1: use of remainder function
+	> Task 2: use of symbol variables
+	> Task 4: use of the print function
+	>Task 5: use of an arbitrary number of operations and the warnings that come from them if misused
+	 > Task 6: 
 - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
 	- TYPE: INT_TYPE
 	- VALUE: 5
@@ -613,7 +613,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 - **TESTING TYPE CASTING - TASK 3**
-- ON PASSED VARIABLES
+> ON PASSED VARIABLES
 - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 	- TYPE: DOUBLE_TYPE
 	- VALUE: 5.00
@@ -650,6 +650,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MDgwNTE3NywxMDA0NjU1MjUyLDEyNz
+eyJoaXN0b3J5IjpbMTAwNzYwNzQ2OCwxMDA0NjU1MjUyLDEyNz
 Y4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
 -->
