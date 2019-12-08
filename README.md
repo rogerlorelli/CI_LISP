@@ -333,8 +333,6 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	- **MOD**
 		- **createFunctionNode()**
 			- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
-		- **createNumberNode()**
-			- adds a Boolean flag, if a double is type cast into an INT a precision loss warning will print
 		- **eval()**
 			- adds support for the evaulation of the new SYMBOL_AST_NODE using evaSymbolNode().
 	- **NEW**
@@ -364,6 +362,26 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	- TYPE: DOUBLE_TYPE
 	- VALUE: -12.00
 	
+## TASK 3 Implementation
+Adds the ability to type cast numbers and symbols
+- **Yacc file**
+	- Extended let_elem to accept an int symbol and and double symbol in the yacc file and to pass them to the createSymbolTableNode function
+	 
+- **Lex file**
+	- added the support for the type casting to numbers directly looking for keyword "int" and "double".
+	
+- **ciLisp.c**
+	- **MOD** 
+		- **createNumberNode()**
+			- adds a Boolean flag, if a double is type cast into an INT a precision loss warning will print
+		- **createSymbolTableNode()**
+			- adds a parameter to the function for the number TYPE.
+			- since all numbers are saved as an double, if the number is a double but the cast type is INT the number will be floored before saving.
+		- **evalSymbol()**
+			- added type checking, if the val_type is cast as an INT but the stored value is evaluated as a DOUBLE a precision loss message will print and the value is floored.
+
+
+**Testing functionality code output**
 - ((let (int a 5.0) (b c) (double c 2) (d 4)) (neg (add (mult a c) (div d c))))
 	- WARNING: precision loss in the assignment for variable a
 	- TYPE: DOUBLE_TYPE
@@ -381,26 +399,6 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	- WARNING: precision loss during number node creation
 	- TYPE: INT_TYPE
 	- VALUE: 6
-## TASK 3 Implementation
-Adds the ability to type cast numbers and symbols
-- **Yacc file**
-	- Extended let_elem to accept an int symbol and and double symbol in the yacc file and to pass them to the createSymbolTableNode function
-	 
-- **Lex file**
-	- added the support for the type casting to numbers directly looking for keyword "int" and "double".
-	
-- **ciLisp.c**
-	- **MOD** 
-		- **createSymbolTableNode()**
-			- adds a parameter to the function for the number TYPE.
-			- since all numbers are saved as an double, if the number is a double but the cast type is INT the number will be floored before saving.
-		- **evalSymbol()**
-			- added type checking, if the val_type is cast as an INT but the stored value is evaluated as a DOUBLE a precision loss message will print and the value is floored.
-
-
-**Testing functionality code output**
-
-//TODO
 ## TASK 4 Implementation
 Adds a print operation into the function list.
 - **Lex file**
@@ -562,6 +560,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTI5NDIxMzQsLTEwOTE3NzY3NTQsLT
-U2NTE5Mzc4M119
+eyJoaXN0b3J5IjpbMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNT
+Y1MTkzNzgzXX0=
 -->
