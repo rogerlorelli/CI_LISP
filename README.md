@@ -578,26 +578,26 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 			
 					
  **Testing functionality code output**
-((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
-TYPE: INT_TYPE
-VALUE: 5
+	- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
+	- TYPE: INT_TYPE
+	- VALUE: 5
 
 ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 TYPE: DOUBLE_TYPE
 VALUE: 5.00
 
-((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
-WARNING: precision loss in the assignment for variable gcd
-TYPE: INT_TYPE
-VALUE: 5
+- ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
+	- WARNING: precision loss in the assignment for variable gcd
+	- TYPE: INT_TYPE
+	- VALUE: 5
 
-((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
-TYPE: INT_TYPE
-VALUE: 5
+- ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
+	- TYPE: INT_TYPE
+	- VALUE: 5
 
 
 
-((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
+- ((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
 => 9 
 => 8 
 => 7 
@@ -609,9 +609,9 @@ VALUE: 5
 => 1 
 => 0 
 => 0 
-TYPE: INT_TYPE
-VALUE: 0
+	- TYPE: INT_TYPE
+	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwNDY1NTI1MiwxMjc2ODgyNTcyLC0xMD
-kxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbMzMxOTQ5MjU3LDEwMDQ2NTUyNTIsMTI3Nj
+g4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
 -->
