@@ -468,6 +468,19 @@ Implements the ability for the language to support an operand list of arbitrary 
 => 1  2  3  4  5  6  7  8  9 
 TYPE: INT_TYPE
 VALUE: 9
+
+> (add 1 2 3 4 5 6 7 8 9.0)
+TYPE: DOUBLE_TYPE
+VALUE: 45.00
+
+> (mult 1 2 3 4 5.0)
+TYPE: DOUBLE_TYPE
+VALUE: 120.00
+
+> (div 1 2 3 4 5 6 7 8 9)
+eval function WARNING: too many parameters for the function div
+TYPE: INT_TYPE
+VALUE: 0
 ## Task 6
 - Adds the read function
 	- allows for user input 
@@ -737,8 +750,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzI2NzA3MzUzLDE1MDQ1NDY1NzYsNDE0OD
-A0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUy
-NTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX
-0=
+eyJoaXN0b3J5IjpbLTUzNjYxMTIxMCwxNTA0NTQ2NTc2LDQxND
+gwNDA5MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMDA0NjU1
+MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M1
+19
 -->
