@@ -594,7 +594,24 @@ VALUE: 5
 ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
 TYPE: INT_TYPE
 VALUE: 5
+
+
+
+((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
+=> 9 
+=> 8 
+=> 7 
+=> 6 
+=> 5 
+=> 4 
+=> 3 
+=> 2 
+=> 1 
+=> 0 
+=> 0 
+TYPE: INT_TYPE
+VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDcxMTY0OTksMTI3Njg4MjU3MiwtMT
-A5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbMTAwNDY1NTI1MiwxMjc2ODgyNTcyLC0xMD
+kxNzc2NzU0LC01NjUxOTM3ODNdfQ==
 -->
