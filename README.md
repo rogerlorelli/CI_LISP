@@ -578,13 +578,28 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 			
 					
  **Testing functionality code output**
-	- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
+ -**recursive**
+- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
 	- TYPE: INT_TYPE
 	- VALUE: 5
-
-((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
-TYPE: DOUBLE_TYPE
-VALUE: 5.00
+- ((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
+=> 9 
+=> 8 
+=> 7 
+=> 6 
+=> 5 
+=> 4 
+=> 3 
+=> 2 
+=> 1 
+=> 0 
+=> 0 
+	- TYPE: INT_TYPE
+	- VALUE: 0
+	- 
+- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
+	- TYPE: DOUBLE_TYPE
+	- VALUE: 5.00
 
 - ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 	- WARNING: precision loss in the assignment for variable gcd
@@ -612,6 +627,6 @@ VALUE: 5.00
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMxOTQ5MjU3LDEwMDQ2NTUyNTIsMTI3Nj
-g4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbLTE3ODcxNDY0MDIsMTAwNDY1NTI1MiwxMj
+c2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
 -->
