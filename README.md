@@ -687,21 +687,22 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 => 0 
 	- TYPE: INT_TYPE
 	- VALUE: 0
-- **TESTING PTYPE CASTING - TASK 3**
-> ON PASSED VARIABLES
-- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
+- **TESTING  TYPE CASTING - TASK 3**
+>
+	- ON PASSED VARIABLES
+> ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 	- TYPE: DOUBLE_TYPE
 	- VALUE: 5.00
 
->  ON FUNCTION DEFINITION
+	- ON FUNCTION DEFINITION
 
-- ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
+> ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
 	- TYPE: INT_TYPE
 	- VALUE: 5
 
-> ON PASSED VARIABLES & ON FUNCTION DEFINITION
+	- ON PASSED VARIABLES & ON FUNCTION DEFINITION
 
-- ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
+> ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 	- WARNING: precision loss in the assignment for variable gcd
 	- TYPE: INT_TYPE
 	- VALUE: 5
@@ -710,7 +711,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 
 
 
-- ((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
+> ((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
 => 9 
 => 8 
 => 7 
@@ -725,7 +726,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDYwMDE2MSwtMTk0NTUzMDM2MSwxMDA0Nj
-U1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4
-M119
+eyJoaXN0b3J5IjpbLTY5NjkyNTIzOCwtMTk0NTUzMDM2MSwxMD
+A0NjU1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5
+Mzc4M119
 -->
