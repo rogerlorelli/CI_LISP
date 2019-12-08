@@ -330,27 +330,28 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	- **SYMBOL_AST_NODE**
 			- an ident string - for variable name
 - **ciLisp.c**
-	- 
-	- **createSymbolTableNode()**
-		- creates an instance of the new SYMBOL_TABLE_NODE 
-		- sets the value type to the type passed in the parameters
-		- sets the ident to the passed parametere
-		- sets the value to the ast_node passed.
-	- **linkSymbolTableNode()**
-		- links the next field of the second node passed to the first node and returns the pointer to the second node.
-	- **linkSymbolTableToAST()**
-		- links the symbol list to the ast_node
-	- **createSymbolNode()** 
-		- creates an instance of the SYMBOL_AST_NODE with its ident set by the passed string.
-	- **evalSymbolNode**
-		- called by eval(), searches the symbolTableNode list of the AST_NODE and it's parent node.
-			- if the symbol is found, evaluates the node's value, an ast_node itself, and returns the information in a RET_VAL
-			- if the symbol is not found prints an error message and returns a RET_VAL with value nan. 
+	- **MOD**
+	- **createFunctionNode**
+		- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
+	- **eval**
+		- adds support for the evaulation of the new SYMBOL_AST_NODE using evaSymbolNode().
+	- **NEW**
+		- **createSymbolTableNode()**
+			- creates an instance of the new SYMBOL_TABLE_NODE 
+			- sets the value type to the type passed in the parameters
+			- sets the ident to the passed parametere
+			- sets the value to the ast_node passed.
+		- **linkSymbolTableNode()**
+			- links the next field of the second node passed to the first node and returns the pointer to the second node.
+		- **linkSymbolTableToAST()**
+			- links the symbol list to the ast_node
+		- **createSymbolNode()** 
+			- creates an instance of the SYMBOL_AST_NODE with its ident set by the passed string.
+		- **evalSymbolNode**
+			- called by eval(), searches the symbolTableNode list of the AST_NODE and it's parent node.
+				- if the symbol is found, evaluates the node's value, an ast_node itself, and returns the information in a RET_VAL
+				- if the symbol is not found prints an error message and returns a RET_VAL with value nan. 
 	
-- **createFunctionNode**
-	- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
-- **eval**
-	- adds support for the evaulation of the new SYMBOL_AST_NODE using evaSymbolNode().
 
 **Testing functionality code output**
 //TODO
@@ -364,11 +365,12 @@ Adds the ability to type cast numbers and symbols
 	- added the support for the type casting to numbers directly looking for keyword "int" and "double".
 	
 - **ciLisp.c**
-	- MOD: createSymbolTableNode
-		- adds a parameter to the function for the number TYPE.
-		- since all numbers are saved as an double, if the number is a double but the cast type is INT the number will be floored before saving.
-	- MOD: evalSymbol
-		- added type checking, if the val_type is cast as an INT but the stored value is evaluated as a DOUBLE a precision loss message will print and the value is floored.
+	- **MOD** 
+		- **createSymbolTableNode()**
+			- adds a parameter to the function for the number TYPE.
+			- since all numbers are saved as an double, if the number is a double but the cast type is INT the number will be floored before saving.
+		- **evalSymbol
+			- added type checking, if the val_type is cast as an INT but the stored value is evaluated as a DOUBLE a precision loss message will print and the value is floored.
 
 
 **Testing functionality code output**
@@ -535,5 +537,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NjQ1MjE2Ml19
+eyJoaXN0b3J5IjpbODA3Njk5NjQ5XX0=
 -->
