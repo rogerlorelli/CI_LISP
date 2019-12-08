@@ -592,7 +592,7 @@ VALUE: 1
 TYPE: INT_TYPE
 VALUE: 1
 
-- Testing Prior Tasks
+	- Testing Prior Tasks
 
 > ((let (a b) (int b 2.5) (double c 3)) (equal (add a c) (div double 10 a)))
 WARNING: precision loss in the assignment for variable b
@@ -687,7 +687,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 => 0 
 	- TYPE: INT_TYPE
 	- VALUE: 0
-- **TESTING TYPE CASTING - TASK 3**
+- **TESTING PTYPE CASTING - TASK 3**
 > ON PASSED VARIABLES
 - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 	- TYPE: DOUBLE_TYPE
@@ -725,7 +725,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjEwMzk1MSwtMTk0NTUzMDM2MSwxMD
-A0NjU1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5
-Mzc4M119
+eyJoaXN0b3J5IjpbNDYwMDE2MSwtMTk0NTUzMDM2MSwxMDA0Nj
+U1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4
+M119
 -->
