@@ -525,8 +525,8 @@ Implements the ability for the language to support an operand list of arbitrary 
 			- creates a new RET_VAL and uses a switch statement, based on the evaluation of the conditional expression either the ifTrue expression will be evaluated and the value assigned to RET_VAL or the ifFalse expression will be.
 		
  **Testing functionality code output**
- //TODO
-
+ >Basic Function Use
+- (greater 10 2)
 ## Task 7 & 8 & 9
 DEVELOPERS NOTE:
 Initially this task was supposed to be broken into three separate tasks, 2 required 1 optional, but I saw that it would be more logical to implement the end goal which removed the requirement of sections of 2 of the tasks. 
@@ -650,6 +650,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwNzYwNzQ2OCwxMDA0NjU1MjUyLDEyNz
-Y4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
+eyJoaXN0b3J5IjpbMzcyNTE2ODAwLDEwMDQ2NTUyNTIsMTI3Nj
+g4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
 -->
