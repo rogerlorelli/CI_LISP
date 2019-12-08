@@ -653,27 +653,28 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 			
 					
  **Testing functionality code output**
- - This set of tests will include capabilities from all tasks except Task3. 
+ >
 	> Task 1: use of remainder function
 	> Task 2: use of symbol variables
 	> Task 4: use of the print function
 	>Task 5: use of an arbitrary number of operations and the warnings that come from them if misused
 	 > Task 6: 
-- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
+	 
+> ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
 	- TYPE: INT_TYPE
 	- VALUE: 5
 
-- ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 ))
+> ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 ))
 	- ERROR: too few parameters for the function gcd
 	- Process finished with exit code 1
  
- - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55 55))
+ > ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55 55))
 	- eval custom function WARNING: too many parameters for the function gcd
 	- TYPE: INT_TYPE
 	- VALUE: 5
 
 
-- ((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
+> ((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
 => 9 
 => 8 
 => 7 
@@ -726,7 +727,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5NjkyNTIzOCwtMTk0NTUzMDM2MSwxMD
+eyJoaXN0b3J5IjpbMTE4MzE4ODAxNywtMTk0NTUzMDM2MSwxMD
 A0NjU1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5
 Mzc4M119
 -->
