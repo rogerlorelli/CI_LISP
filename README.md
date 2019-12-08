@@ -656,6 +656,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  >
 	> Task 1: use of remainder function
 	> Task 2: use of symbol variables
+	>Task 3: Type Casting
 	> Task 4: use of the print function
 	>Task 5: use of an arbitrary number of operations and the warnings that come from them if misused
 	 > Task 6: 
@@ -688,46 +689,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 => 0 
 	- TYPE: INT_TYPE
 	- VALUE: 0
-- **TESTING  TYPE CASTING - TASK 3**
->
-	- ON PASSED VARIABLES
-> ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 5.00
-
-	- ON FUNCTION DEFINITION
-
-> ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
-	- TYPE: INT_TYPE
-	- VALUE: 5
-
-	- ON PASSED VARIABLES & ON FUNCTION DEFINITION
-
-> ((let (int gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
-	- WARNING: precision loss in the assignment for variable gcd
-	- TYPE: INT_TYPE
-	- VALUE: 5
-
-
-
-
-
-> ((let (countdown lambda (x) (cond (greater x 0) (countdown (print (sub x 1))) (print x)))) (countdown 10))
-=> 9 
-=> 8 
-=> 7 
-=> 6 
-=> 5 
-=> 4 
-=> 3 
-=> 2 
-=> 1 
-=> 0 
-=> 0 
-	- TYPE: INT_TYPE
-	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4MzE4ODAxNywtMTk0NTUzMDM2MSwxMD
-A0NjU1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5
-Mzc4M119
+eyJoaXN0b3J5IjpbLTE5OTQ3MjYyNTEsLTE5NDU1MzAzNjEsMT
+AwNDY1NTI1MiwxMjc2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUx
+OTM3ODNdfQ==
 -->
