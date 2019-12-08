@@ -318,18 +318,19 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 
 - **ciLisp.h** file
 	- **MOD**
-	- **AST_NODE** 
-		- added:
+		- **AST_NODE** 
 			-  a symbol_table_node to allow a linked list of variable definitions to be attached.
 			- a parent, to reference any "higher" ast_nodes that may contain a symbol_table_node list
 			- a SYMBOL_AST_NODE field to the union along side the number and function ast nodes.
-	- NEW: SYMBOL_TABLE_NODE
-		- an ident string
-		- a value field that holds an ast_node, so a value can be anything from another symbol to a number to a function
-		- a next field that references another symbol_table_node to create a linked list of variables.
-	- NEW: SYMBOL_AST_NODE
-		- an ident string
-	
+	- **NEW** 
+		- **SYMBOL_TABLE_NODE**
+			- an ident string
+			- a value field that holds an ast_node, so a value can be anything from another symbol to a number to a function
+			- a next field that references another symbol_table_node to create a linked list of variables.
+	- **SYMBOL_AST_NODE**
+			- an ident string - for variable name
+- **ciLisp.c**
+	- 
 	- **createSymbolTableNode()**
 		- creates an instance of the new SYMBOL_TABLE_NODE 
 		- sets the value type to the type passed in the parameters
@@ -534,5 +535,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1ODQ4NDk4OF19
+eyJoaXN0b3J5IjpbMTc3NjQ1MjE2Ml19
 -->
