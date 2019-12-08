@@ -300,7 +300,7 @@ Implements the execution/evaluation of simple mathematical operations on integer
 ## TASK 2 Implementation
 Implements grammar to allow for variables, called symbols in ciLisp. Requires modification to the lex file, the Bison file, the ciLisp.h & .c files. 
 
-1. **lex file** - added symbol and let tokens
+- **lex file** - added symbol and let tokens
 	   - also modifications to the **regex** to included letters and symbols that accepts 0 or 1 letters 
 	   - edited the double regex to allow for more than 1 number before the decimal
 	   - fixed the regex to include all functions needed for task two up to "hypot"
@@ -532,5 +532,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwMDc2NDgyMl19
+eyJoaXN0b3J5IjpbNDk0MjQyNzI4XX0=
 -->
