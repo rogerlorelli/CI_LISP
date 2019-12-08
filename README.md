@@ -597,6 +597,20 @@ ERROR CHECKING PRINTING RAND: 0.84
 TYPE: DOUBLE_TYPE
 VALUE: 0.84
 
+> (read 5.5)
+eval function WARNING: too many parameters for the function read
+read := 5
+TYPE: INT_TYPE
+VALUE: 5
+
+> 
+> (read)
+read := 5.0
+TYPE: DOUBLE_TYPE
+VALUE: 5.00
+
+	- CONDITIONAL EXPRESSION TEST
+
 
 
 	- Testing Prior Tasks
@@ -713,7 +727,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE0ODA0MDkyLC0yMTE2MTgzNjIzLC0xOT
-Q1NTMwMzYxLDEwMDQ2NTUyNTIsMTI3Njg4MjU3MiwtMTA5MTc3
-Njc1NCwtNTY1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbMTUwNDU0NjU3Niw0MTQ4MDQwOTIsLTIxMT
+YxODM2MjMsLTE5NDU1MzAzNjEsMTAwNDY1NTI1MiwxMjc2ODgy
+NTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
 -->
