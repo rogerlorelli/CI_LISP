@@ -413,6 +413,11 @@ Adds a print operation into the function list.
 	- => 7.00 
 	- TYPE: DOUBLE_TYPE
 	- VALUE: 7.00
+- (print (add int 2.0 double 5))
+	- WARNING: precision loss during number node creation
+	- => 7.00 
+	- TYPE: DOUBLE_TYPE
+	- VALUE: 7.00
 ## Task 5
 Implements the ability for the language to support an operand list of arbitrary size.
 - **Yacc file**
@@ -565,6 +570,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1Mzk2MDI4NiwxMjc2ODgyNTcyLC0xMD
-kxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbLTM1NTIxMjA0LDEyNzY4ODI1NzIsLTEwOT
+E3NzY3NTQsLTU2NTE5Mzc4M119
 -->
