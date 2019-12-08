@@ -373,6 +373,10 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	- TYPE: DOUBLE_TYPE
 	- VALUE: 12.00
 
+- (abs (neg(add (mult 5 double 2) (div double 5 2))))
+	- TYPE: DOUBLE_TYPE
+	- VALUE: 12.50
+
 - (add int 2.2 4)
 	- WARNING: precision loss during number node creation
 	- TYPE: INT_TYPE
@@ -558,6 +562,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0ODMxMzExOSwtMTA5MTc3Njc1NCwtNT
-Y1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbLTE1OTI5NDIxMzQsLTEwOTE3NzY3NTQsLT
+U2NTE5Mzc4M119
 -->
