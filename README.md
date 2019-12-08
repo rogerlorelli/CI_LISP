@@ -15,6 +15,7 @@
 ## TASK 1 implementation
 
 *Finished TODO's provided within the ciLisp.c file
+Implements the execution/evaluation of simple mathematical operations on integers and doubles, allows for the composition of functions as operators.
 
 1. **createNumberNode**
 	* assign number type based on the passed type value.
