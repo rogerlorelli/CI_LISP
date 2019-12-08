@@ -526,7 +526,7 @@ Implements the ability for the language to support an operand list of arbitrary 
 		
  **Testing functionality code output**
 - Basic Function Use
-
+	- Positive Integers
 > (greater 10 2)
 TYPE: INT_TYPE
 VALUE: 1
@@ -551,10 +551,6 @@ VALUE: 1
 TYPE: INT_TYPE
 VALUE: 0
 
-> (equal -10 2)
-TYPE: INT_TYPE
-VALUE: 0
-
 > (equal -10 -10)
 TYPE: INT_TYPE
 VALUE: 1
@@ -574,6 +570,12 @@ VALUE: 0
 > (greater -1 -5)
 TYPE: INT_TYPE
 VALUE: 1
+> (equal -10 2)
+TYPE: INT_TYPE
+VALUE: 0
+
+
+
 
 ## Task 7 & 8 & 9
 DEVELOPERS NOTE:
@@ -698,6 +700,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTYxMTM1NDMzLDEwMDQ2NTUyNTIsMTI3Nj
-g4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbLTIwMDE3OTE1OTQsMTAwNDY1NTI1MiwxMj
+c2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
 -->
