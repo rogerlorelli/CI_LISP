@@ -367,7 +367,9 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	- TYPE: DOUBLE_TYPE
 	- VALUE: -12.00
 
-- 
+- (abs (neg(add (mult 5 double 2) (div 4 2))))
+	- TYPE: DOUBLE_TYPE
+	- VALUE: 12.00
 ## TASK 3 Implementation
 Adds the ability to type cast numbers and symbols
 - **Yacc file**
@@ -549,5 +551,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwMzQ1NTQ4OF19
+eyJoaXN0b3J5IjpbLTU2NTE5Mzc4M119
 -->
