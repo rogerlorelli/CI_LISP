@@ -464,7 +464,10 @@ Implements the ability for the language to support an operand list of arbitrary 
 				- logic is now implemented to check for the minimum appropriate number of operands to compute an operation, printing an error message and exiting if the minimum is not met. There is also logic to check for too many operands being passed to any operations, that are not the previously mentioned ADD, Mult, or PRINT, printing a warning message, but will compute the operation once with the necessary operands.
 
 **Testing functionality code output**
-
+> (print 1 2 3 4 5 6 7 8 9)
+=> 1  2  3  4  5  6  7  8  9 
+TYPE: INT_TYPE
+VALUE: 9
 ## Task 6
 - Adds the read function
 	- allows for user input 
@@ -611,7 +614,7 @@ TYPE: DOUBLE_TYPE
 VALUE: 5.00
 
 	- CONDITIONAL EXPRESSION TEST
-	- 
+		- also tests Task 4 & 5
 
 > ((let (a (rand)) (b (read))) (cond (greater b a) (print a) (print b a)))
 read := 0.5
@@ -734,7 +737,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyNDc3MTI4LDE1MDQ1NDY1NzYsNDE0OD
+eyJoaXN0b3J5IjpbMzI2NzA3MzUzLDE1MDQ1NDY1NzYsNDE0OD
 A0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUy
 NTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX
 0=
