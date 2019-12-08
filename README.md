@@ -334,7 +334,7 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 		- **createFunctionNode()**
 			- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
 		- **createNumberNode()**
-			- adds a Boolean flag, if a number is type cast into an INT a precision loss warning print, assumes that any type casting will be done to the correct inputs
+			- adds a Boolean flag, if a double is type cast into an INT a precision loss warning will print
 		- **eval()**
 			- adds support for the evaulation of the new SYMBOL_AST_NODE using evaSymbolNode().
 	- **NEW**
@@ -372,6 +372,11 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 - (abs (neg(add (mult 5 double 2) (div 4 2))))
 	- TYPE: DOUBLE_TYPE
 	- VALUE: 12.00
+
+- (add int 2.2 4)
+	- WARNING: precision loss during number node creation
+	- TYPE: INT_TYPE
+	- VALUE: 6
 ## TASK 3 Implementation
 Adds the ability to type cast numbers and symbols
 - **Yacc file**
@@ -553,5 +558,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
+eyJoaXN0b3J5IjpbLTc0ODMxMzExOSwtMTA5MTc3Njc1NCwtNT
+Y1MTkzNzgzXX0=
 -->
