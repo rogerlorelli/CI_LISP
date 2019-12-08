@@ -578,8 +578,14 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 			
 					
  **Testing functionality code output**
- //TODO
+((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
+TYPE: INT_TYPE
+VALUE: 5
+
+((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
+TYPE: DOUBLE_TYPE
+VALUE: 5.00
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4MzQ1NjkzOCwxMjc2ODgyNTcyLC0xMD
-kxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbLTEyNjQ3NDA4NTcsMTI3Njg4MjU3MiwtMT
+A5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
 -->
