@@ -423,6 +423,11 @@ Adds a print operation into the function list.
 	- => 12.50 
 	- TYPE: DOUBLE_TYPE
 	- VALUE: 12.50
+
+- (print (neg(add (mult 5 double 2) (div double 5 2))))
+	- => -12.50 
+	- TYPE: DOUBLE_TYPE
+	- VALUE: -12.50
 ## Task 5
 Implements the ability for the language to support an operand list of arbitrary size.
 - **Yacc file**
@@ -575,6 +580,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4NjQ3Nzc4OCwxMjc2ODgyNTcyLC0xMD
+eyJoaXN0b3J5IjpbLTM4MzQ1NjkzOCwxMjc2ODgyNTcyLC0xMD
 kxNzc2NzU0LC01NjUxOTM3ODNdfQ==
 -->
