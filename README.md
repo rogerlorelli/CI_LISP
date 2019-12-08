@@ -592,6 +592,8 @@ VALUE: 1
 TYPE: INT_TYPE
 VALUE: 1
 
+	- RAND & READ
+
 > (rand)
 ERROR CHECKING PRINTING RAND: 0.84
 TYPE: DOUBLE_TYPE
@@ -603,15 +605,20 @@ read := 5
 TYPE: INT_TYPE
 VALUE: 5
 
-> 
 > (read)
 read := 5.0
 TYPE: DOUBLE_TYPE
 VALUE: 5.00
 
 	- CONDITIONAL EXPRESSION TEST
+	- 
 
-
+> ((let (a (rand)) (b (read))) (cond (greater b a) (print a) (print b a)))
+read := 0.5
+ERROR CHECKING PRINTING RAND: 0.84
+=> 0.50  0.84 
+TYPE: DOUBLE_TYPE
+VALUE: 0.84
 
 	- Testing Prior Tasks
 
@@ -727,7 +734,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwNDU0NjU3Niw0MTQ4MDQwOTIsLTIxMT
-YxODM2MjMsLTE5NDU1MzAzNjEsMTAwNDY1NTI1MiwxMjc2ODgy
-NTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbLTMyNDc3MTI4LDE1MDQ1NDY1NzYsNDE0OD
+A0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUy
+NTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX
+0=
 -->
