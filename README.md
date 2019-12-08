@@ -592,8 +592,10 @@ VALUE: 1
 TYPE: INT_TYPE
 VALUE: 1
 
+- Testing Prior Tasks
 
 
+>
 ## Task 7 & 8 & 9
 DEVELOPERS NOTE:
 Initially this task was supposed to be broken into three separate tasks, 2 required 1 optional, but I saw that it would be more logical to implement the end goal which removed the requirement of sections of 2 of the tasks. 
@@ -717,6 +719,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4NDUyODQyNCwxMDA0NjU1MjUyLDEyNz
-Y4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
+eyJoaXN0b3J5IjpbLTE5NDU1MzAzNjEsMTAwNDY1NTI1MiwxMj
+c2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
 -->
