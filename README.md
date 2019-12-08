@@ -467,7 +467,7 @@ Implements the ability for the language to support an operand list of arbitrary 
 			- creates an ast_node of COND_TYPE and assigns the provided expressions to the appropriate fields. Sets the parents of the expressions this node. 
 		- **evalCondNode()**
 			- creates a new RET_VAL and uses a switch statement, based on the evaluation of the conditional expression either the ifTrue expression will be evaluated and the value assigned to RET_VAL or the ifFalse expression will be.
-			- 
+		
  **Testing functionality code output**
  //TODO
 
@@ -475,7 +475,8 @@ Implements the ability for the language to support an operand list of arbitrary 
 DEVELOPERS NOTE:
 Initially this task was supposed to be broken into three separate tasks, 2 required 1 optional, but I saw that it would be more logical to implement the end goal which removed the requirement of sections of 2 of the tasks. 
 
-- Adds the ability to create user defined functions and allows tail-end recursive behavior.
+- Adds the ability to create user defined functions and allows tail-end recursive behavior. The function will follow same rules as the majority of already implemented function: 
+	- when more operands are passed to the function then are in formal parameter of the function a warning will print but the function will still execute using the appropriate number of operands once. If less than the required parameters are passed an error will print and the program will exit safely. 
 
 
 - **Lex File**
@@ -484,10 +485,41 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- added support for the LAMBA token.
 		- **MOD**
 			- let_elem
-				- added a grammar that would allow the creation of a custom function, both type case and not, that uses the SYMBOL token for passing it's name, and the LAMBDA token to delineate that it is a custom function.
+				- added a grammar that would allow the creation of custom functions, both type cast and not, that uses the SYMBOL token for passing it's name, and the LAMBDA token to delineate that it is a custom function.
 		- **NEW**
 			- struct arg_table_node
 				- added to the union to allow for the return of arg_table_node pointers 
 			- arg_list
-				- a list of args, or the formal parameters, of the new custom function is any. The args are defined as symbols and follow the rules of such.
+				- a list of args, or the formal parameters, of the new custom function if any. The args follow the same rules as symbols are defined after the lambda keyword.
 - **ciLisp.h**
+	- **MOD** 
+		- **AST_NODE**
+			- added a ARG_TABLE_NODE pointer to the struct allowing for the attachment of an arg_list if the node contains a custom function.
+			- added a Boolean flag isCustom to be set when a custom function is created to help in symbol evaluation, directing the search to check the arg_list instead of the symbol_table_node list.
+	- **NEW** 
+		- **ARG_TABLE_NODE**
+			- This node, or a list of these nodes, will be attached to a custom function ast node and act as the parameter list of the function. 
+			- new struct with three fields:
+				- String ident: for a parameter name
+				- NUM_AST_NODE value: acts as a stack to hold the evaluated values that are passed when the custom function is called.
+					- DEVELOPERS NOTE: Since these tasks were so closely linked I implemented this section to be tail-recursive so all passed operands are evaluated before they are put onto the stack and the stack is cleared before any further operands are added. This eliminated the need for the stack to be a linked list, since there would only ever be 1 value per argument.
+				- ARG_TABLE_NODE next: like the symbol table, an arg_list is a linked list of all the arguments needed for the function to operate. 
+- **ciLisp.c**
+	- **MOD** 
+		- **evalFuncNode()**
+			- added support to call evalCustomFuncNode(), also implements logic so if a custom function is to be evaluated the operands are not, this is handled within evalCustomFuncNode() and would lead to redundant evaluations. 
+		- **evalSymbNode()**
+			- adds support for searching arg_lists if a custom function is being evaluated.
+	- **NEW**
+		- **createArgNode()**
+			- creates and returns the pointer to a new arg_table_node, passing it an id string, and leaving the value field null. 
+		- **linkArgNode()**
+			- points the next pointer of the first passed arg_table_node to a second arg_table_node and returns the pointer of the first node. 
+		- **createCustomFunctionNode()**
+			- unlike normal functions a custom function is stored as a symbol_table_node, the function name is the ident, the algorithm of the function is stored as an ast_node in the value field and the arg_list is attached to the ast_node's arg_list field. The isCustom flag is set to true, where is is normally false, and since the structure of the node is still a symbol_table_node it retains the num_type field so type casting is allowed.
+		- **evalCustomFunc()**
+			- called by evalFuncNode(), functions much like evalSymbolNode in that it searches the attached ast_node and it's parents for the symbol_table_node that contains the definition of what the function name is. If found a temporary arg_list is created and the arguments passed from the function call are evaluated and copied. This evaluation of the passed arguments before the custom function is evaluated is one of the key features that allows for this grammar to be tail-recursive. The temporary arg_list then transfers its values to the arg_list of the function definition, here is also where the error checking for the approriate number of parameters passed vs number of formal parameters happens. Finally the custom function definition is evaluated. 
+			
+					
+ **Testing functionality code output**
+ //TODO
