@@ -300,11 +300,12 @@ Implements the execution/evaluation of simple mathematical operations on integer
 ## TASK 2 Implementation
 Implements grammar to allow for variables, called symbols in ciLisp. Requires modification to the lex file, the Bison file, the ciLisp.h & .c files. 
 
-- **lex file** - added symbol and let tokens
-	   - also modifications to the **regex** to included letters and symbols that accepts 0 or 1 letters 
-	   - edited the double regex to allow for more than 1 number before the decimal
+- **lex file** 
+	-**MOD** 
+	- modifications to the **regex** to included letters and symbols that accepts 0 or 1 letters 
+	  - edited the double regex to allow for more than 1 number before the decimal
 	   - fixed the regex to include all functions needed for task two up to "hypot"
-2. **Yacc/Bison** file 
+- **Yacc/Bison** file 
 
 	* extended the token to include the LET %token
 	* added symbol to the ast node %type 
@@ -312,7 +313,7 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	* extended the grammar in the s-expr to include symbol and let_section
 	* let_section, let_list, let_elem and symbol were also added to the grammar in their own sections with appropriate definition function calls.
 
-3. **ciLisp.h** file
+- **ciLisp.h** file
 - extended the ciLisp.h file to support the modifications to the lex and bison files.
 	- modifications include the creation of or modifications to the following functions and structs:
 	- NEW: SYMBOL_TABLE_NODE
@@ -341,8 +342,6 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 		- called by eval(), searches the symbolTableNode list of the AST_NODE and it's parent node.
 			- if the symbol is found, evaluates the node's value, an ast_node itself, and returns the information in a RET_VAL
 			- if the symbol is not found prints an error message and returns a RET_VAL with value nan. 
-	
-#### Added changes from task that were made in task two 
 	
 - **createFunctionNode**
 	- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
@@ -532,5 +531,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk0MjQyNzI4XX0=
+eyJoaXN0b3J5IjpbNjEzMzUyNTc1XX0=
 -->
