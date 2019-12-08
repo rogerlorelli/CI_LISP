@@ -578,6 +578,19 @@ VALUE: 1
 TYPE: INT_TYPE
 VALUE: 0
 
+	- DOUBLES
+	
+> (greater 2.5 2.25)
+TYPE: INT_TYPE
+VALUE: 1
+
+> (less 2.25 2.5)
+TYPE: INT_TYPE
+VALUE: 1
+
+> (equal 2.5 2.5)
+TYPE: INT_TYPE
+VALUE: 1
 
 
 
@@ -704,6 +717,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDkxNTYxMzksMTAwNDY1NTI1MiwxMj
-c2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbMTU4NDUyODQyNCwxMDA0NjU1MjUyLDEyNz
+Y4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
 -->
