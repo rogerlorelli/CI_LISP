@@ -579,7 +579,9 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 					
  **Testing functionality code output**
  - **Standard Test**
-	 - This set of tests will include capabilities from tasks 1, 2,  
+	 - This set of tests will include capabilities from all tasks except Task3. 
+		 - Task 1: use of remainder function
+		 - Task 2: use of 
 - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
 	- TYPE: INT_TYPE
 	- VALUE: 5
@@ -628,6 +630,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTE2NTIxOTM3LDEwMDQ2NTUyNTIsMTI3Nj
-g4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbMTE2MjEwNzQ3NCwxMDA0NjU1MjUyLDEyNz
+Y4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
 -->
