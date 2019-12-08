@@ -354,7 +354,9 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	
 
 **Testing functionality code output**
-//TODO
+- ((let (a 5) (b c) (c 2) (d 4)) (neg (add (mult a c) (div d c))))
+	- TYPE: INT_TYPE
+	- VALUE: -12
 
 ## TASK 3 Implementation
 Adds the ability to type cast numbers and symbols
@@ -369,7 +371,7 @@ Adds the ability to type cast numbers and symbols
 		- **createSymbolTableNode()**
 			- adds a parameter to the function for the number TYPE.
 			- since all numbers are saved as an double, if the number is a double but the cast type is INT the number will be floored before saving.
-		- **evalSymbol
+		- **evalSymbol()**
 			- added type checking, if the val_type is cast as an INT but the stored value is evaluated as a DOUBLE a precision loss message will print and the value is floored.
 
 
@@ -537,5 +539,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODA3Njk5NjQ5XX0=
+eyJoaXN0b3J5IjpbLTEyOTk1MzA1MTBdfQ==
 -->
