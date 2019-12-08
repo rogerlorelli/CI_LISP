@@ -527,6 +527,28 @@ Implements the ability for the language to support an operand list of arbitrary 
  **Testing functionality code output**
  >Basic Function Use
 - (greater 10 2)
+	- TYPE: INT_TYPE
+	- VALUE: 1
+
+- (greater 2 10)
+	- TYPE: INT_TYPE
+	- VALUE: 0
+
+- (greater 10 2)
+	- TYPE: INT_TYPE
+	- VALUE: 1
+
+- (greater 2 10)
+	- TYPE: INT_TYPE
+	- VALUE: 0
+
+- (greater 10 2)
+	- TYPE: INT_TYPE
+	- VALUE: 1
+
+- (greater 2 10)
+	- TYPE: INT_TYPE
+	- VALUE: 0
 ## Task 7 & 8 & 9
 DEVELOPERS NOTE:
 Initially this task was supposed to be broken into three separate tasks, 2 required 1 optional, but I saw that it would be more logical to implement the end goal which removed the requirement of sections of 2 of the tasks. 
@@ -650,6 +672,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzcyNTE2ODAwLDEwMDQ2NTUyNTIsMTI3Nj
+eyJoaXN0b3J5IjpbMTMzNjMyNDE0LDEwMDQ2NTUyNTIsMTI3Nj
 g4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
 -->
