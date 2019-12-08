@@ -334,7 +334,7 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 		- **createFunctionNode()**
 			- attaches the new parent nodes of the operands op1 and op2 to the newly created node.
 		- **createNumberNode()**
-			- adds a Boolean flag, if a number is type cast into 
+			- adds a Boolean flag, if a number is type cast into an INT a precision loss warning print, assumes that any type casting will be done to the correct inputs
 		- **eval()**
 			- adds support for the evaulation of the new SYMBOL_AST_NODE using evaSymbolNode().
 	- **NEW**
@@ -553,5 +553,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTc2Mjc1NDYsLTU2NTE5Mzc4M119
+eyJoaXN0b3J5IjpbLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
 -->
