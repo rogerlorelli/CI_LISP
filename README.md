@@ -578,7 +578,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 			
 					
  **Testing functionality code output**
- -**recursive**
+ - **Standard Test**
 - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
 	- TYPE: INT_TYPE
 	- VALUE: 5
@@ -596,7 +596,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 => 0 
 	- TYPE: INT_TYPE
 	- VALUE: 0
-	- 
+- **TESTING TYPE CASTING ON PASSED NUMBERS - TASK **
 - ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd double 95 55))
 	- TYPE: DOUBLE_TYPE
 	- VALUE: 5.00
@@ -627,6 +627,6 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODcxNDY0MDIsMTAwNDY1NTI1MiwxMj
-c2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbMTk2MzQyNjMyNSwxMDA0NjU1MjUyLDEyNz
+Y4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
 -->
