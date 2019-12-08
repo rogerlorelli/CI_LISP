@@ -301,13 +301,16 @@ Implements the execution/evaluation of simple mathematical operations on integer
 Implements grammar to allow for variables, called symbols in ciLisp. Requires modification to the lex file, the Bison file, the ciLisp.h & .c files. 
 
 - **lex file** 
-	-**MOD** 
-	- modifications to the **regex** to included letters and symbols that accepts 0 or 1 letters 
-	  - edited the double regex to allow for more than 1 number before the decimal
-	   - fixed the regex to include all functions needed for task two up to "hypot"
-- **Yacc/Bison** file 
-
-	* extended the token to include the LET %token
+	- **MOD** 
+		- modifications to the **regex** to included letters and symbols that accepts 0 or 1 letters 
+		- edited the double regex to allow for more than 1 number before the decimal
+		 - fixed the regex to include all functions needed for task two up to "hypot"
+	- **NEW**
+		- added symbol and let tokens
+- **Yacc/Bison** file
+	- **MOD**
+	- extended the token to include the LET %token
+	- **NEW**
 	* added symbol to the ast node %type 
 	* added let_section let_list let_elem to the symNode %type
 	* extended the grammar in the s-expr to include symbol and let_section
@@ -531,5 +534,5 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  **Testing functionality code output**
  //TODO
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjEzMzUyNTc1XX0=
+eyJoaXN0b3J5IjpbMTQ4ODA2Nzc5Nl19
 -->
