@@ -51,7 +51,7 @@ Implements the execution/evaluation of simple mathematical operations on integer
   - Below are sample runs with outputs.
     - I believe that I have tested all the combinations for this level of the project
 >
-	- Positive Numbers
+	- Positive & Negative Integers
 > (neg 1)
 TYPE: INT_TYPE
 VALUE: -1
@@ -68,6 +68,10 @@ VALUE: 54.60
 TYPE: DOUBLE_TYPE
 VALUE: 2.24
 
+> (sqrt -5)
+TYPE: DOUBLE_TYPE
+VALUE: -nan
+
 > (add 1 2)
 TYPE: INT_TYPE
 VALUE: 3
@@ -80,6 +84,43 @@ VALUE: -1
 TYPE: INT_TYPE
 VALUE: 10
 
+> (div 4 2)
+TYPE: INT_TYPE
+VALUE: 2
+
+> (remainder 5 2)
+TYPE: INT_TYPE
+VALUE: 1
+
+> (log 5)
+TYPE: DOUBLE_TYPE
+VALUE: 1.61
+
+> (pow 2 3)
+TYPE: INT_TYPE
+VALUE: 8
+
+> (max 2 1)
+TYPE: INT_TYPE
+VALUE: 2
+
+> (min 2 1)
+TYPE: INT_TYPE
+VALUE: 1
+
+> (exp2 3)
+TYPE: INT_TYPE
+VALUE: 8
+
+> (cbrt 8)
+TYPE: DOUBLE_TYPE
+VALUE: 2.00
+
+> (hypot 2 3)
+TYPE: DOUBLE_TYPE
+VALUE: 3.61
+
+- 
 >
 
 ## TASK 2 Implementation
@@ -558,8 +599,9 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MDE1NDUyOCwxMTQ5MTgwMjgxLC05NT
-MwNzEzMjgsOTA5NTUyNTQwLDE1MDQ1NDY1NzYsNDE0ODA0MDky
-LC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUyNTIsMT
-I3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbMTU4NzQ3NDI2NiwxMTQwMTU0NTI4LDExND
+kxODAyODEsLTk1MzA3MTMyOCw5MDk1NTI1NDAsMTUwNDU0NjU3
+Niw0MTQ4MDQwOTIsLTIxMTYxODM2MjMsLTE5NDU1MzAzNjEsMT
+AwNDY1NTI1MiwxMjc2ODgyNTcyLC0xMDkxNzc2NzU0LC01NjUx
+OTM3ODNdfQ==
 -->
