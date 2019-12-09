@@ -492,6 +492,9 @@ eval function WARNING: too many parameters for the function abs
 TYPE: INT_TYPE
 VALUE: 5
 
+>(mult (add 1 1) (abs -5) (div double 5 2) (exp2 3))
+TYPE: DOUBLE_TYPE
+VALUE: 200.00
 
 ## Task 6
 - Adds the read function
@@ -762,8 +765,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA5NTUyNTQwLDE1MDQ1NDY1NzYsNDE0OD
-A0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUy
-NTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX
-0=
+eyJoaXN0b3J5IjpbLTk1MzA3MTMyOCw5MDk1NTI1NDAsMTUwND
+U0NjU3Niw0MTQ4MDQwOTIsLTIxMTYxODM2MjMsLTE5NDU1MzAz
+NjEsMTAwNDY1NTI1MiwxMjc2ODgyNTcyLC0xMDkxNzc2NzU0LC
+01NjUxOTM3ODNdfQ==
 -->
