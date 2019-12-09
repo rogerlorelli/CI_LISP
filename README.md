@@ -611,10 +611,10 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
  >
 	> Task 1: use of remainder function
 	> Task 2: use of symbol variables
-	>Task 3: Type Casting
+	> Task 3: Type Casting
 	> Task 4: use of the print function
-	>Task 5: use of an arbitrary number of operations and the warnings that come from them if misused
-	 > Task 6: Conditional Expressions and Operations & Functions: RAND & READ
+	> Task 5: use of an arbitrary number of operations and the warnings that come from them if misused
+	> Task 6: Conditional Expressions and Operations & Functions: RAND & READ
 	 
 > ((let (gcd lambda (x y) (cond (greater y x) (gcd y x) (cond (equal y 0) (x) (gcd y (remainder x y)))))) (gcd 95 55))
 	- TYPE: INT_TYPE
@@ -658,9 +658,9 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI2OTEyNjEzLDExNDAxNTQ1MjgsMTE0OT
-E4MDI4MSwtOTUzMDcxMzI4LDkwOTU1MjU0MCwxNTA0NTQ2NTc2
-LDQxNDgwNDA5MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMD
-A0NjU1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5
-Mzc4M119
+eyJoaXN0b3J5IjpbMTY2MzkwODAwNyw4MjY5MTI2MTMsMTE0MD
+E1NDUyOCwxMTQ5MTgwMjgxLC05NTMwNzEzMjgsOTA5NTUyNTQw
+LDE1MDQ1NDY1NzYsNDE0ODA0MDkyLC0yMTE2MTgzNjIzLC0xOT
+Q1NTMwMzYxLDEwMDQ2NTUyNTIsMTI3Njg4MjU3MiwtMTA5MTc3
+Njc1NCwtNTY1MTkzNzgzXX0=
 -->
