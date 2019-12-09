@@ -606,7 +606,15 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 		- **evalCustomFunc()**
 			- called by evalFuncNode(), functions much like evalSymbolNode() in that it searches the attached ast_node and it's parents for the symbol_table_node that contains the definition of what the function name is. If found a temporary arg_list is created and the arguments passed from the function call are evaluated and copied. This evaluation of the passed arguments before the custom function is evaluated is one of the key features that allows for this grammar to be tail-recursive. The temporary arg_list then transfers its values to the arg_list of the function definition, here is also where the error checking for the appropriate number of parameters passed vs number of formal parameters happens. Finally the custom function definition is evaluated. 
 			
-					
+ Note: When using read or rand functions within a recursive environment the functions will not be called more than once. This is because of the behavior of those functions that overwrite their type from a func_type to a num_type.
+> ((let (custRead lambda (x y) (cond (greater y x) (print x) (print y)))) (custRead (read) (rand)))
+read := .5
+ERROR CHECKING PRINTING RAND: 0.84
+=> 0.50 
+TYPE: DOUBLE_TYPE
+VALUE: 0.50				
+
+	
  **Testing functionality code output**
  >
 	> Task 1: use of remainder function
@@ -658,15 +666,10 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 
-	- Note: When using read or rand functions within a recursive environment the functions will not be called more than once. This is because of the behavior of those functions that overwrite their type from a func_type to a num_type.
-> ((let (custRead lambda (x y) (cond (greater y x) (print x) (print y)))) (custRead (read) (rand)))
-read := .5
-ERROR CHECKING PRINTING RAND: 0.84
-=> 0.50 
-TYPE: DOUBLE_TYPE
-VALUE: 0.50
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4Mzg0MDYxOSwxNjYzOTA4MDA3LDgyNj
+eyJoaXN0b3J5IjpbLTYyNDc5Njg5MCwxNjYzOTA4MDA3LDgyNj
 kxMjYxMywxMTQwMTU0NTI4LDExNDkxODAyODEsLTk1MzA3MTMy
 OCw5MDk1NTI1NDAsMTUwNDU0NjU3Niw0MTQ4MDQwOTIsLTIxMT
 YxODM2MjMsLTE5NDU1MzAzNjEsMTAwNDY1NTI1MiwxMjc2ODgy
