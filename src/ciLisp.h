@@ -44,7 +44,7 @@ typedef enum oper {
     CUSTOM_OPER =255
 } OPER_TYPE;
 
-typedef enum {LAMBDA_TYPE} SYMBOL_TYPE;
+//typedef enum {NO_SYM_TYPE,LAMBDA_TYPE} SYMBOL_TYPE;
 
 
 OPER_TYPE resolveFunc(char *);
@@ -87,7 +87,7 @@ typedef struct {
 } FUNC_AST_NODE;
 
 typedef struct symbol_table_node {
-    SYMBOL_TYPE type;
+//    SYMBOL_TYPE type;
     NUM_TYPE val_type;
     char *ident;
     struct ast_node *val;
@@ -133,7 +133,7 @@ AST_NODE *createSymbolNode(char *id);
 
 AST_NODE *linkASTNodes(AST_NODE *node1, AST_NODE *node2);
 
-AST_NODE *createNumberNode(double value, NUM_TYPE type);
+AST_NODE *createNumberNode(double value, NUM_TYPE type,bool warningFlag);
 
 AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1);
 
@@ -161,7 +161,7 @@ RET_VAL addHelper(AST_NODE *op_list);
 RET_VAL multHelper(AST_NODE *op_list);
 
 NUM_TYPE numTypeHelper1(RET_VAL *op1);
-NUM_TYPE numTypeHelper2(RET_VAL *op1,RET_VAL *op2);
+RET_VAL numTypeHelper2(RET_VAL *op1,RET_VAL *op2, RET_VAL *result);
 
 
 #endif

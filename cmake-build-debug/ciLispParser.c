@@ -1345,7 +1345,7 @@ yyreduce:
 #line 66 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: number ::= INT\n");
-        (yyval.astNode) = createNumberNode((yyvsp[0].dval), INT_TYPE);
+        (yyval.astNode) = createNumberNode((yyvsp[0].dval), INT_TYPE,false);
     }
 #line 1351 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
@@ -1354,7 +1354,7 @@ yyreduce:
 #line 70 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: number ::= DOUBLE\n");
-        (yyval.astNode) = createNumberNode((yyvsp[0].dval), DOUBLE_TYPE);
+        (yyval.astNode) = createNumberNode((yyvsp[0].dval), DOUBLE_TYPE,false);
     }
 #line 1360 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
@@ -1363,7 +1363,7 @@ yyreduce:
 #line 74 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: number ::= CAST INT\n");
-        (yyval.astNode) = createNumberNode((yyvsp[0].dval), (yyvsp[-1].ival));
+        (yyval.astNode) = createNumberNode((yyvsp[0].dval), (yyvsp[-1].ival),false);
     }
 #line 1369 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;
@@ -1372,7 +1372,7 @@ yyreduce:
 #line 78 "src/ciLisp.y" /* yacc.c:1646  */
     {
         fprintf(stderr, "yacc: number ::= CAST DOUBLE\n");
-        (yyval.astNode) = createNumberNode((yyvsp[0].dval), (yyvsp[-1].ival));
+        (yyval.astNode) = createNumberNode((yyvsp[0].dval), (yyvsp[-1].ival),true);
     }
 #line 1378 "/home/roger/Desktop/COMP-232/ciLisp/CI_LISP/cmake-build-debug/ciLispParser.c" /* yacc.c:1646  */
     break;

@@ -65,19 +65,19 @@ s_expr:
 number:
     INT {
         fprintf(stderr, "yacc: number ::= INT\n");
-        $$ = createNumberNode($1, INT_TYPE);
+        $$ = createNumberNode($1, INT_TYPE,false);
     }
     | DOUBLE {
         fprintf(stderr, "yacc: number ::= DOUBLE\n");
-        $$ = createNumberNode($1, DOUBLE_TYPE);
+        $$ = createNumberNode($1, DOUBLE_TYPE,false);
     }
     | type INT{
         fprintf(stderr, "yacc: number ::= CAST INT\n");
-        $$ = createNumberNode($2, $1);
+        $$ = createNumberNode($2, $1,false);
     }
     | type DOUBLE{
         fprintf(stderr, "yacc: number ::= CAST DOUBLE\n");
-        $$ = createNumberNode($2, $1);
+        $$ = createNumberNode($2, $1,true);
     };
 
 f_expr:
