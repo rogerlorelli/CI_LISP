@@ -155,6 +155,24 @@ VALUE: -2.00
 
 	- Integers & Doubles
 
+> (div 5 2.0)
+TYPE: DOUBLE_TYPE
+VALUE: 2.50
+
+> (mult 2.66 1)
+TYPE: DOUBLE_TYPE
+VALUE: 2.66
+
+> (max 2.55 2)
+TYPE: DOUBLE_TYPE
+VALUE: 2.55
+
+> (min 0.01 1)
+TYPE: DOUBLE_TYPE
+VALUE: 0.01
+
+	- Compounded Expressions
+
 
 >
 
@@ -634,7 +652,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTQwNDc0NDcsMTE0MDE1NDUyOCwxMT
+eyJoaXN0b3J5IjpbLTE5ODU5MTA3MDAsMTE0MDE1NDUyOCwxMT
 Q5MTgwMjgxLC05NTMwNzEzMjgsOTA5NTUyNTQwLDE1MDQ1NDY1
 NzYsNDE0ODA0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLD
 EwMDQ2NTUyNTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1
