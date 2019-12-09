@@ -592,6 +592,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 				- ARG_TABLE_NODE next: like the symbol table, an arg_list is a linked list of all the arguments needed for the function to operate. 
 - **ciLisp.c**
 	- **MOD** 
+		- **freeNode()**
+			- added the logic to traverse all of the new data nodes (symbol,)
 		- **evalFuncNode()**
 			- added support to call evalCustomFuncNode(), also implements logic so if a custom function is to be evaluated the operands are not, this is handled within evalCustomFuncNode() and would lead to redundant evaluations. 
 		- **evalSymbNode()**
@@ -669,9 +671,10 @@ VALUE: 0.50
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNDc5Njg5MCwxNjYzOTA4MDA3LDgyNj
-kxMjYxMywxMTQwMTU0NTI4LDExNDkxODAyODEsLTk1MzA3MTMy
-OCw5MDk1NTI1NDAsMTUwNDU0NjU3Niw0MTQ4MDQwOTIsLTIxMT
-YxODM2MjMsLTE5NDU1MzAzNjEsMTAwNDY1NTI1MiwxMjc2ODgy
-NTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbLTQwMTEwNDE1MCwtNjI0Nzk2ODkwLDE2Nj
+M5MDgwMDcsODI2OTEyNjEzLDExNDAxNTQ1MjgsMTE0OTE4MDI4
+MSwtOTUzMDcxMzI4LDkwOTU1MjU0MCwxNTA0NTQ2NTc2LDQxND
+gwNDA5MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMDA0NjU1
+MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M1
+19
 -->
