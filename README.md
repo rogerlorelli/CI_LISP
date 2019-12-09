@@ -128,7 +128,8 @@ VALUE: 2.00
 TYPE: DOUBLE_TYPE
 VALUE: 3.61
 
-- 
+	- Positive and Negative Doubles 
+
 >
 
 ## TASK 2 Implementation
@@ -607,7 +608,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODYzODQ2NTE2LDExNDAxNTQ1MjgsMTE0OT
+eyJoaXN0b3J5IjpbLTcwNzc1OTgzLDExNDAxNTQ1MjgsMTE0OT
 E4MDI4MSwtOTUzMDcxMzI4LDkwOTU1MjU0MCwxNTA0NTQ2NTc2
 LDQxNDgwNDA5MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMD
 A0NjU1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5
