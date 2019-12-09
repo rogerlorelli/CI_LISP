@@ -6,10 +6,13 @@
     #include "ciLisp.h"
 %}
 
+letter [a-zA-Z]
+symbol {letter}+
 digit [0-9]
 int [+-]?{digit}+
-double [+-]?{digit}\.{digit}*
-func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"max"|"min"
+double [+-]?{digit}+\.{digit}*
+number [type] int | [type] double
+func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"max"|"min"|"exp2"|"cbrt"|"hypot"|"print"|"rand"|"read"|"equal"|"less"|"greater"
 
 %%
 
@@ -23,7 +26,30 @@ func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"
     yylval.dval = strtod(yytext, NULL);
     fprintf(stderr, "lex: DOUBLE dval = %lf\n", yylval.dval);
     return DOUBLE;
-}
+    }
+
+"int" {
+    return TYPE_INT;
+    }
+
+"double" {
+    return TYPE_DOUBLE;
+    }
+
+"let" {
+    fprintf(stderr, "lex: LET\n");
+    return LET;
+    }
+
+"cond" {
+    fprintf(stderr, "lex: LPAREN\n");
+    return COND;
+    }
+
+"lambda" {
+    fprintf(stderr, "lex: LAMBDA\n");
+    return LAMBDA;
+    }
 
 "quit" {
     return QUIT;
@@ -46,6 +72,13 @@ func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"
     return RPAREN;
     }
 
+{symbol} {
+    yylval.sval = (char *) malloc(strlen(yytext)*sizeof(char));
+    strcpy(yylval.sval, yytext);
+    fprintf(stderr, "lex: SYMBOL sval = %s\n", yylval.sval);
+    return SYMBOL;
+    }
+
 [\n] {
     fprintf(stderr, "lex: EOL\n");
     YY_FLUSH_BUFFER;
@@ -65,7 +98,7 @@ func "neg"|"abs"|"exp"|"sqrt"|"add"|"sub"|"mult"|"div"|"remainder"|"log"|"pow"|"
  */
 int main(void) {
 
-    //   freopen("/dev/null", "w", stderr); // except for this line that can be uncommented to throw away debug printouts
+       freopen("/dev/null", "w", stderr); // except for this line that can be uncommented to throw away debug printouts
 
     char *s_expr_str = NULL;
     size_t s_expr_str_len = 0;

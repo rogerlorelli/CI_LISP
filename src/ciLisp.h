@@ -44,6 +44,9 @@ typedef enum oper {
     CUSTOM_OPER =255
 } OPER_TYPE;
 
+//typedef enum {NO_SYM_TYPE,LAMBDA_TYPE} SYMBOL_TYPE;
+
+
 OPER_TYPE resolveFunc(char *);
 
 // Types of Abstract Syntax Tree nodes.
@@ -51,22 +54,24 @@ OPER_TYPE resolveFunc(char *);
 // You will expand this enum as you build the project.
 typedef enum {
     NUM_NODE_TYPE,
-    FUNC_NODE_TYPE
+    FUNC_NODE_TYPE,
+    SYM_NODE_TYPE,
+    COND_NODE_TYPE
 } AST_NODE_TYPE;
 
+typedef struct {
+    struct ast_node *cond;
+    struct ast_node *ifTrue; // to eval if cond is nonzero
+    struct ast_node *ifFalse; // to eval if cond is zero
+} COND_AST_NODE;
+
 // Types of numeric values
-typedef enum {
-    INT_TYPE,
-    DOUBLE_TYPE
-} NUM_TYPE;
+typedef enum { NO_TYPE, INT_TYPE, DOUBLE_TYPE } NUM_TYPE;
 
 // Node to store a number.
 typedef struct {
     NUM_TYPE type;
-    union{
-        double dval;
-        long ival;
-    } value;
+    double value;
 } NUM_AST_NODE;
 
 // Values returned by eval function will be numbers with a type.
@@ -77,31 +82,86 @@ typedef NUM_AST_NODE RET_VAL;
 // Node to store a function call with its inputs
 typedef struct {
     OPER_TYPE oper;
-    char* ident; // only needed for custom functions
-    struct ast_node *op1;
-    struct ast_node *op2;
+    char *name;
+    struct ast_node *opList;
 } FUNC_AST_NODE;
+
+typedef struct symbol_table_node {
+//    SYMBOL_TYPE type;
+    NUM_TYPE val_type;
+    char *ident;
+    struct ast_node *val;
+    struct symbol_table_node *next;
+} SYMBOL_TABLE_NODE;
+
+typedef struct arg_table_node {
+    char *ident;
+    NUM_AST_NODE value;
+    struct arg_table_node *next;
+} ARG_TABLE_NODE;
+
+typedef struct symbol_ast_node {
+    char *ident;
+} SYMBOL_AST_NODE;
 
 // Generic Abstract Syntax Tree node. Stores the type of node,
 // and reference to the corresponding specific node (initially a number or function call).
 typedef struct ast_node {
     AST_NODE_TYPE type;
+    SYMBOL_TABLE_NODE *symbolTable;
+    ARG_TABLE_NODE *arg_list;
+    struct ast_node *parent;
     union {
         NUM_AST_NODE number;
         FUNC_AST_NODE function;
+        SYMBOL_AST_NODE symbol;
+        COND_AST_NODE condition;
     } data;
+    struct ast_node *next;
+    bool isCustom;
 } AST_NODE;
 
-AST_NODE *createNumberNode(double value, NUM_TYPE type);
+AST_NODE *createCondASTNode(AST_NODE *condNode, AST_NODE *trueNode, AST_NODE *falseNode);
 
-AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1, AST_NODE *op2);
+SYMBOL_TABLE_NODE *createSymbolTableNode(char *id, AST_NODE *op1, NUM_TYPE type);
+
+SYMBOL_TABLE_NODE *linkSymbolTableNode(SYMBOL_TABLE_NODE *node1, SYMBOL_TABLE_NODE *node2);
+
+AST_NODE *linkSymbolTableToAST(SYMBOL_TABLE_NODE *symbNode, AST_NODE *node);
+
+AST_NODE *createSymbolNode(char *id);
+
+AST_NODE *linkASTNodes(AST_NODE *node1, AST_NODE *node2);
+
+AST_NODE *createNumberNode(double value, NUM_TYPE type,bool warningFlag);
+
+AST_NODE *createFunctionNode(char *funcName, AST_NODE *op1);
+
+SYMBOL_TABLE_NODE *createCustomFunctionNode(NUM_TYPE numType, char *funcName, ARG_TABLE_NODE *arg_list, AST_NODE *funcNode);
+
+ARG_TABLE_NODE *createArgNode(char *id);
+
+ARG_TABLE_NODE *linkArgList(char* id1, ARG_TABLE_NODE *node2);
 
 void freeNode(AST_NODE *node);
 
 RET_VAL eval(AST_NODE *node);
 RET_VAL evalNumNode(NUM_AST_NODE *numNode);
-RET_VAL evalFuncNode(FUNC_AST_NODE *funcNode);
+RET_VAL evalFuncNode(AST_NODE *funcNode);
+RET_VAL evalCondNode(COND_AST_NODE *condNode);
+RET_VAL evalSymbNode(AST_NODE *symbNode);
+RET_VAL evalCustomFunc(AST_NODE *funcNode);
+RET_VAL readHelper(AST_NODE *funcNode);
 
 void printRetVal(RET_VAL val);
+
+RET_VAL maxHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL minHelper(RET_VAL *op1,RET_VAL *op2);
+RET_VAL addHelper(AST_NODE *op_list);
+RET_VAL multHelper(AST_NODE *op_list);
+
+NUM_TYPE numTypeHelper1(RET_VAL *op1);
+RET_VAL numTypeHelper2(RET_VAL *op1,RET_VAL *op2, RET_VAL *result);
+
 
 #endif
