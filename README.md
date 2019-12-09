@@ -52,6 +52,33 @@ Implements the execution/evaluation of simple mathematical operations on integer
     - I believe that I have tested all the combinations for this level of the project
 >
 	- Positive Numbers
+> (neg 1)
+TYPE: INT_TYPE
+VALUE: -1
+
+> (abs 4)
+TYPE: INT_TYPE
+VALUE: 4
+
+> (exp 4)
+TYPE: DOUBLE_TYPE
+VALUE: 54.60
+
+> (sqrt 5)
+TYPE: DOUBLE_TYPE
+VALUE: 2.24
+
+> (add 1 2)
+TYPE: INT_TYPE
+VALUE: 3
+
+> (sub 1 2)
+TYPE: INT_TYPE
+VALUE: -1
+
+> (mult 5 2)
+TYPE: INT_TYPE
+VALUE: 10
 
 >
 
@@ -531,8 +558,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzI0NDE2NzAsMTE0OTE4MDI4MSwtOT
-UzMDcxMzI4LDkwOTU1MjU0MCwxNTA0NTQ2NTc2LDQxNDgwNDA5
-MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMDA0NjU1MjUyLD
-EyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
+eyJoaXN0b3J5IjpbMTE0MDE1NDUyOCwxMTQ5MTgwMjgxLC05NT
+MwNzEzMjgsOTA5NTUyNTQwLDE1MDQ1NDY1NzYsNDE0ODA0MDky
+LC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUyNTIsMT
+I3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
 -->
