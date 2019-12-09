@@ -173,7 +173,13 @@ VALUE: 0.01
 
 	- Compounded Expressions
 
+> (abs (neg(add (mult 5 2) (div 5 2))))
+TYPE: INT_TYPE
+VALUE: 12
 
+> (abs (neg(add (mult 5 2) (div 5 2.0))))
+TYPE: DOUBLE_TYPE
+VALUE: 12.50
 >
 
 ## TASK 2 Implementation
@@ -652,9 +658,9 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODU5MTA3MDAsMTE0MDE1NDUyOCwxMT
-Q5MTgwMjgxLC05NTMwNzEzMjgsOTA5NTUyNTQwLDE1MDQ1NDY1
-NzYsNDE0ODA0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLD
-EwMDQ2NTUyNTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1
-MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbODI2OTEyNjEzLDExNDAxNTQ1MjgsMTE0OT
+E4MDI4MSwtOTUzMDcxMzI4LDkwOTU1MjU0MCwxNTA0NTQ2NTc2
+LDQxNDgwNDA5MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMD
+A0NjU1MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5
+Mzc4M119
 -->
