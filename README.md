@@ -51,252 +51,7 @@ Implements the execution/evaluation of simple mathematical operations on integer
   - Below are sample runs with outputs.
     - I believe that I have tested all the combinations for this level of the project
 
-- (neg 1)
-  - TYPE: INT_TYPE
-  - VALUE: -1
-  
-- (neg -1)
-  - TYPE: INT_TYPE
-  - VALUE: 1
-  
-- (neg 1.1)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: -1.10
-  
-- (neg -1.1)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 1.10
-  
-- (abs 1)
-  - TYPE: INT_TYPE
-  - VALUE: 1
-  
-- (abs -1)
-  - TYPE: INT_TYPE
-  - VALUE: 1
-  
-- (abs 1.25)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 1.25
-  
-- (abs -1.5)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 1.50
-  
-- (exp 1)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 2.72
-  
-- (exp 1.1)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 3.00
-  
-- (exp 66)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 46071866343312917806440251392.00
-  
-- (exp -6.6)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 0
-  
-- (exp -2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 0.14
 
-- (sqrt 2)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 1.41
-	
-- (sqrt 4)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 2
-
-- (sqrt -100)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: -nan
-
-- (sqrt 100)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 10 
-
-- (cbrt 9)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  2.08
-
-- (cbrt 8)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  2.00
-
-- (cbrt 5.5123)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  1.77
-
-- (cbrt -8)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  -2.00
-
-- (cbrt -3)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  -1.44
-
-- (log 1)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  0.00
-	
-- (log -1)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: nan
-	
-- (log -515)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  nan
-
-- (log 515)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  6.24
-
-- (log 52.644)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  3.96
-
-- (log 52)
-	- TYPE: DOUBLE_TYPE
-	- VALUE:  3.95
-  
-- (exp2 1)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 2
-  
-- (exp2 2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 4.59
-  
-- (exp2 -1)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 0.50
-  
-- (exp2 -1.1)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 0.47
- 
-- (add 1 1)
-  - TYPE: INT_TYPE
-  - VALUE: 2
-  
-- (add 1.1 2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 3.30
-  
-- (add 1 2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 3.20
-   
-- (add -1 1)
-  - TYPE: INT_TYPE
-  - VALUE: 0
-  
-- (add -1.1 2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 1.10
- 
-- (sub 1 1)
-  - TYPE: INT_TYPE
-  - VALUE: 2
-  
-- (add 1.1 2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 3.30
-  
-- (add 1 2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 3.20
-   
-- (add -1 1)
-  - TYPE: INT_TYPE
-  - VALUE: 0
-  
-- (add -1.1 2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 1.10
-  
-- (add -1 2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: 1.20
-  
-- (sub 1 2)
-  - TYPE: INT_TYPE
-  - VALUE: 3.20
-   
-- (sub 1 -2)
-  - TYPE: INT_TYPE
-  - VALUE: 3
-  
-- (sub -2.2 1.1)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: -3.30
-  
-- (sub 1.1 -2.2)
-  - TYPE: DOUBLE_TYPE
-  - VALUE: -3.30
-
-- (neg (mult 5 (add 1 2)))
-	- TYPE: INT_TYPE
-	- VALUE: -15
-
-- (remainder 5.62 1)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 0.62
-
-- (reminder (add 16 52) (mult 5 6))
-	- TYPE: INT_TYPE
-	- VALUE: 8
-	
-- (pow 2 3)
-	- TYPE: INT_TYPE
-	- VALUE: 8
-
-- (pow 2 3.3)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 9.85
-
-- (pow 2 -1)
-	- TYPE: INT_TYPE
-	- VALUE: 1
-
-- (pow 2 -2)
-	- TYPE: INT_TYPE
-	- VALUE: 0
-
-- (pow 2.0 -2)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 0.25
-
-- (max 5 1)
-	- TYPE: INT_TYPE
-	- VALUE: 5
-
-- (max -5 1)
-	- TYPE: INT_TYPE
-	- VALUE: 1
-
-- (max 5.5 1)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 5.50
-
-- (max 5.0 5)
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 5.00
-
-- (max -5 -1)
-	- TYPE: INT_TYPE
-	- VALUE: -1
-	
-- (neg (add (mult 5 2.0) (div 4.5 2)))
-	- TYPE: DOUBLE_TYPE
-	- VALUE: -12.25
-- (neg (add (mult 5 2) (div 4 2)))
-	- TYPE: INT_TYPE
-	- VALUE: -12
 ## TASK 2 Implementation
 Implements grammar to allow for variables, called symbols in ciLisp. Requires modification to the lex file, the Bison file, the ciLisp.h & .c files. 
 
@@ -309,12 +64,12 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 		- added symbol and let tokens
 - **Yacc/Bison** file
 	- **MOD**
-	- extended the token to include the LET %token
-	- extended the grammar in the s-expr to include symbol and let_section
+		- extended the token to include the LET %token
+		- extended the grammar in the s-expr to include symbol and let_section
 	- **NEW**
-	- added symbol to the ast node %type 
-	- added let_section let_list let_elem to the symNode %type
-	- let_section, let_list, let_elem and symbol were also added to the grammar in their own sections with appropriate definition function calls.
+		- added symbol to the ast node %type 
+		- added let_section let_list let_elem to the symNode %type
+		- let_section, let_list, let_elem and symbol were also added to the grammar in their own sections with appropriate definition function calls.
 
 - **ciLisp.h** file
 	- **MOD**
@@ -354,13 +109,13 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 	
 
 **Testing functionality code output**
-- ((let (a 5) (b c) (c 2) (d 4)) (neg (add (mult a c) (div d c))))
-	- TYPE: INT_TYPE
-	- VALUE: -12
-	
-- ((let (a 5.0) (b c) (c 2) (d 4)) (neg (add (mult a c) (div d c))))
-	- TYPE: DOUBLE_TYPE
-	- VALUE: -12.00
+>  ((let (a 5) (b c) (c 2) (d 4)) (neg (add (mult a c) (div d c))))
+TYPE: INT_TYPE
+VALUE: -12
+
+>  ((let (a 5.0) (b c) (c 2) (d 4)) (neg (add (mult a c) (div d c))))
+TYPE: DOUBLE_TYPE
+VALUE: -12.00
 	
 ## TASK 3 Implementation
 Adds the ability to type cast numbers and symbols
@@ -773,8 +528,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0OTE4MDI4MSwtOTUzMDcxMzI4LDkwOT
-U1MjU0MCwxNTA0NTQ2NTc2LDQxNDgwNDA5MiwtMjExNjE4MzYy
-MywtMTk0NTUzMDM2MSwxMDA0NjU1MjUyLDEyNzY4ODI1NzIsLT
-EwOTE3NzY3NTQsLTU2NTE5Mzc4M119
+eyJoaXN0b3J5IjpbMTE2MzQ2ODAwNiwxMTQ5MTgwMjgxLC05NT
+MwNzEzMjgsOTA5NTUyNTQwLDE1MDQ1NDY1NzYsNDE0ODA0MDky
+LC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUyNTIsMT
+I3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
 -->
