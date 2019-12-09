@@ -408,26 +408,26 @@ Adds a print operation into the function list.
 		- added print to switch options
 		
 **Testing functionality code output**
-- (print (add int 2.0 double 5))
-	- WARNING: precision loss during number node creation
-	- => 7.00 
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 7.00
+> (print (neg(add (mult 5 double 2) (div double 5 2))))
+=> -12.50 
+TYPE: DOUBLE_TYPE
+VALUE: -12.50
 
-- ((let (a 5)) (print a))
-	- => 5 
-	- TYPE: INT_TYPE
-	- VALUE: 5
+> (print (abs (neg(add (mult 5 double 2) (div double 5 2)))))
+=> 12.50 
+TYPE: DOUBLE_TYPE
+VALUE: 12.50
 
-- (print (abs (neg(add (mult 5 double 2) (div double 5 2)))))
-	- => 12.50 
-	- TYPE: DOUBLE_TYPE
-	- VALUE: 12.50
+>  ((let (a 5)) (print a))
+=> 5 
+TYPE: INT_TYPE
+VALUE: 5
 
-- (print (neg(add (mult 5 double 2) (div double 5 2))))
-	- => -12.50 
-	- TYPE: DOUBLE_TYPE
-	- VALUE: -12.50
+> (print (add int 2.0 double 5))
+WARNING: precision loss during number node creation
+=> 7.00 
+TYPE: DOUBLE_TYPE
+VALUE: 7.00
 ## Task 5
 Implements the ability for the language to support an operand list of arbitrary size.
 - **Yacc file**
@@ -773,7 +773,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjcxNzg5NiwtOTUzMDcxMzI4LDkwOT
+eyJoaXN0b3J5IjpbMTE0OTE4MDI4MSwtOTUzMDcxMzI4LDkwOT
 U1MjU0MCwxNTA0NTQ2NTc2LDQxNDgwNDA5MiwtMjExNjE4MzYy
 MywtMTk0NTUzMDM2MSwxMDA0NjU1MjUyLDEyNzY4ODI1NzIsLT
 EwOTE3NzY3NTQsLTU2NTE5Mzc4M119
