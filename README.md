@@ -658,11 +658,17 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 
-{symbol} {
+	- Note: When using read or rand functions within a recursive environment the functions will not be called more than once 
+> ((let (custRead lambda (x y) (cond (greater y x) (print x) (print y)))) (custRead (read) (rand)))
+read := .5
+ERROR CHECKING PRINTING RAND: 0.84
+=> 0.50 
+TYPE: DOUBLE_TYPE
+VALUE: 0.50
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxMzg2MDM1NCwxNjYzOTA4MDA3LDgyNj
-kxMjYxMywxMTQwMTU0NTI4LDExNDkxODAyODEsLTk1MzA3MTMy
-OCw5MDk1NTI1NDAsMTUwNDU0NjU3Niw0MTQ4MDQwOTIsLTIxMT
-YxODM2MjMsLTE5NDU1MzAzNjEsMTAwNDY1NTI1MiwxMjc2ODgy
-NTcyLC0xMDkxNzc2NzU0LC01NjUxOTM3ODNdfQ==
+eyJoaXN0b3J5IjpbMTYyNjA5ODAzLDE2NjM5MDgwMDcsODI2OT
+EyNjEzLDExNDAxNTQ1MjgsMTE0OTE4MDI4MSwtOTUzMDcxMzI4
+LDkwOTU1MjU0MCwxNTA0NTQ2NTc2LDQxNDgwNDA5MiwtMjExNj
+E4MzYyMywtMTk0NTUzMDM2MSwxMDA0NjU1MjUyLDEyNzY4ODI1
+NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
 -->
