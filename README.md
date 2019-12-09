@@ -50,7 +50,10 @@ Implements the execution/evaluation of simple mathematical operations on integer
 
   - Below are sample runs with outputs.
     - I believe that I have tested all the combinations for this level of the project
+>
+	- Positive Numbers
 
+>
 
 ## TASK 2 Implementation
 Implements grammar to allow for variables, called symbols in ciLisp. Requires modification to the lex file, the Bison file, the ciLisp.h & .c files. 
@@ -83,7 +86,7 @@ Implements grammar to allow for variables, called symbols in ciLisp. Requires mo
 			- a value field that holds an ast_node, so a value can be anything from another symbol to a number to a function
 			- a next field that references another symbol_table_node to create a linked list of variables.
 	- **SYMBOL_AST_NODE**
-			- an ident string - for variable name
+		- an ident string - for variable name
 - **ciLisp.c**
 	- **MOD**
 		- **createFunctionNode()**
@@ -528,8 +531,8 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2MzQ2ODAwNiwxMTQ5MTgwMjgxLC05NT
-MwNzEzMjgsOTA5NTUyNTQwLDE1MDQ1NDY1NzYsNDE0ODA0MDky
-LC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUyNTIsMT
-I3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX0=
+eyJoaXN0b3J5IjpbLTEwNzI0NDE2NzAsMTE0OTE4MDI4MSwtOT
+UzMDcxMzI4LDkwOTU1MjU0MCwxNTA0NTQ2NTc2LDQxNDgwNDA5
+MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMDA0NjU1MjUyLD
+EyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M119
 -->
