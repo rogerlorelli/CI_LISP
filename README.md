@@ -593,7 +593,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 - **ciLisp.c**
 	- **MOD** 
 		- **freeNode()**
-			- added the logic to traverse all of the new data nodes (symbol,)
+			- added the logic to traverse all of the new data nodes, (symbol,function,condition, and number), the arg_list, the symbol_table_node listand the op_list if applicable. During the traveras
 		- **evalFuncNode()**
 			- added support to call evalCustomFuncNode(), also implements logic so if a custom function is to be evaluated the operands are not, this is handled within evalCustomFuncNode() and would lead to redundant evaluations. 
 		- **evalSymbNode()**
@@ -671,10 +671,10 @@ VALUE: 0.50
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMTEwNDE1MCwtNjI0Nzk2ODkwLDE2Nj
-M5MDgwMDcsODI2OTEyNjEzLDExNDAxNTQ1MjgsMTE0OTE4MDI4
-MSwtOTUzMDcxMzI4LDkwOTU1MjU0MCwxNTA0NTQ2NTc2LDQxND
-gwNDA5MiwtMjExNjE4MzYyMywtMTk0NTUzMDM2MSwxMDA0NjU1
-MjUyLDEyNzY4ODI1NzIsLTEwOTE3NzY3NTQsLTU2NTE5Mzc4M1
-19
+eyJoaXN0b3J5IjpbOTMxNjg0MTg2LC02MjQ3OTY4OTAsMTY2Mz
+kwODAwNyw4MjY5MTI2MTMsMTE0MDE1NDUyOCwxMTQ5MTgwMjgx
+LC05NTMwNzEzMjgsOTA5NTUyNTQwLDE1MDQ1NDY1NzYsNDE0OD
+A0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLDEwMDQ2NTUy
+NTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1MTkzNzgzXX
+0=
 -->
