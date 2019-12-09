@@ -152,6 +152,10 @@ VALUE: 0.34
 > (cbrt -8.0)
 TYPE: DOUBLE_TYPE
 VALUE: -2.00
+
+	- Integers & Doubles
+
+
 >
 
 ## TASK 2 Implementation
@@ -630,7 +634,7 @@ Initially this task was supposed to be broken into three separate tasks, 2 requi
 	- TYPE: INT_TYPE
 	- VALUE: 0
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDY5NzQwMjMsMTE0MDE1NDUyOCwxMT
+eyJoaXN0b3J5IjpbLTE5MTQwNDc0NDcsMTE0MDE1NDUyOCwxMT
 Q5MTgwMjgxLC05NTMwNzEzMjgsOTA5NTUyNTQwLDE1MDQ1NDY1
 NzYsNDE0ODA0MDkyLC0yMTE2MTgzNjIzLC0xOTQ1NTMwMzYxLD
 EwMDQ2NTUyNTIsMTI3Njg4MjU3MiwtMTA5MTc3Njc1NCwtNTY1
